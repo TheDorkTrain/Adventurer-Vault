@@ -41,6 +41,7 @@ const typeDefs = `
   type Character {
     _id: ID
     name: String!
+    image: String
     characterClass: String!
     level: Int!
     lineage: String!
@@ -60,6 +61,7 @@ const typeDefs = `
   }
 
   type Query {
+    me: User
     character: Character
     characters: [Character]
   }
@@ -67,20 +69,20 @@ const typeDefs = `
   type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
-  addCharacter(name: String!, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: [String], savingThrows: [String], bio: String): Character
+  addCharacter(name: String!, image: String, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: [String], savingThrows: [String], bio: String): Character
   addSpell(characterId: ID!, name: String!, description: String!): Spell
   addItem(characterId: ID!, name: String!, description: String!): Item
   addEntry(characterId: ID!, entry: String!): Entry
   # // ? Mutations for edits
-  updateCharacter(userId: ID!, characterId: ID!, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: [String], savingThrows: [String], bio: String): Character
-  updateSpell(userId: ID!, spellId: ID!, name: String, description: String): Spell
-  updateItem(userId: ID!, itemId: ID!, name: String, description: String): Item
-  updateEntry(userId: ID!, entryId: ID!, entry: String!): Entry
+  updateCharacter(characterId: ID!, image: String, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: [String], savingThrows: [String], bio: String): Character
+  updateSpell(characterId: ID!, spellId: ID!, name: String, description: String): Spell
+  updateItem(characterId: ID!, itemId: ID!, name: String, description: String): Item
+  updateEntry(characterId: ID!, entryId: ID!, entry: String!): Entry
   # // ? Mutations for deletion
-  deleteCharacter(userId: ID!, characterId: ID!): Character
-  deleteSpell(userId: ID!, characterId: ID!, spellId: ID!): Spell
-  deleteItem(userId: ID!, characterId: ID!, itemId: ID!): Item
-  deleteEntry(userId: ID!, characterId: ID!, entryId: ID!): Entry
+  deleteCharacter(characterId: ID!): Character
+  deleteSpell(characterId: ID!, spellId: ID!): Spell
+  deleteItem(characterId: ID!, itemId: ID!): Item
+  deleteEntry(characterId: ID!, entryId: ID!): Entry
   }
 `;
 

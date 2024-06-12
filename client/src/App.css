@@ -3,11 +3,68 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  color: hsl(0, 0%, 100%);
+  color: hsl(0, 3%, 7%);
 }
 
-body {
-  background-image: url('https://cdn.wallpapersafari.com/73/16/qLTo9w.jpg');
+.app1 {
+  background-image: url('./assets/background_maps/map1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
+}
+.app2 {
+  background-image: url('./assets/background_maps/map2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.app3 {
+  background-image: url('./assets/background_maps/map3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.app4 {
+  background-image: url('./assets/background_maps/map4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app5 {
+  background-image: url('./assets/background_maps/map5.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app6 {
+  background-image: url('./assets/background_maps/map6.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app7 {
+  background-image: url('./assets/background_maps/map7.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app8 {
+  background-image: url('./assets/background_maps/map8.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app9 {
+  background-image: url('./assets/background_maps/map9.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.app10 {
+  background-image: url('./assets/background_maps/map10.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
 }

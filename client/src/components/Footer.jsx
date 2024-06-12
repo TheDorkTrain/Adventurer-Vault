@@ -1,31 +1,35 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-
-import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-      
-  return (
-    <footer>
-      <div className="footer">
-        <div className="footer-content">
+  const location = useLocation();
+  const navigate = useNavigate(); 
+
+    return (
+      <footer className="w-100 mt-auto bg-secondary p-4">
+        <div className="container text-center mb-5">
+          {location.pathname !== '/' && (
+            <button
+              className="btn btn-dark mb-3"
+              onClick={() => navigate(-1)}
+            >
+              &larr; Go Back
+            </button>
+          )}
           <h4>
-            Made with{' '}
+            Made with {'MERN'}
             <span
               className="emoji"
               role="img"
-              aria-label="sword"
+              aria-label="heart"
               aria-hidden="false"
             >
               ⚔️
-            </span>{' '}
-            by Team 4
-          </h4>
-        </div>
+              </span>{' '}
+          by team 4
+        </h4>
       </div>
     </footer>
   );
-}
+};
 
-export default Footer
+export default Footer;

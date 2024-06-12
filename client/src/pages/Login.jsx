@@ -1,6 +1,6 @@
 import { useState } from 'react'; 
 import { Link } from 'react-router-dom';
-
+import Header from '../components/header';
 // import { useMutation } from '@apollo/client';
 // import { LOGIN_USER } from '../utils/mutations';
 
@@ -48,17 +48,12 @@ const data = {};
   return (
     // <section className="flex-row justify-center mb-4">
     <>
+
       <div className="col-12 col-lg-10">
       
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Initiating your character's journey</h4>
+          <h4 className="card-header bg-dark text-light p-2"></h4>
           <div className="card-body">
-            {data ? (
-              <p>
-                "Success! You've successfully established your account within the realm."{' '} //
-                <Link to="/">back to the adventure's hub.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -84,7 +79,7 @@ const data = {};
                   Present your action
                 </button>
               </form>
-            )}
+          
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">

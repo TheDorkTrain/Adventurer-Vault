@@ -16,7 +16,7 @@ const Dashboard = () => {
     <> {/* Wrap the JSX code inside a fragment element */}
       <header>
         <nav id="nav">
-          <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button> {/* Use className instead of class */}
+        <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button> {/* Use className instead of class */}
         </nav>
       </header>
       <div>

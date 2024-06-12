@@ -1,48 +1,24 @@
-import { useState } from 'react'
-import './App.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Home from './pages/Home'
+import React, { useEffect, useState } from 'react';
+import backgroundImage1 from './assets/background_maps/map1.jpg';
+import backgroundImage2 from './assets/background_maps/map2.jpg';
 
+const App = () => {
+  const [randomImage, setRandomImage] = useState('');
 
-  import './App.css'
+  useEffect(() => {
+    const backgroundImages = [backgroundImage1, backgroundImage2];
+    const randomImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+    setRandomImage(randomImage);
+  }, []);
 
-
-  function App() { 
-    return (
-      <>
-        <h1>Adventurer Vault</h1>
-        <div className="card">
-          <button>
-          <a className="btn btn-lg btn-info m-2" href="/login">
-            Enter the realm
-          </a>
-          </button>
-          <button>
-          <a className="btn btn-lg btn-light m-2" href="/signup">
-            Initiate your journey
-          </a>
-          </button>
-        </div>
-
-        <div className="app">
-          <Header/>
-          <main/>
-            <Routes>
-              <Route path="/" element={<Home/>} />
-              <Route path="/login" element={<Login/>} />
-              <Route path="/signup" element={<Signup/>} />
-              <Route path="/error" element={<ErrorPage/>} />
-            </Routes>
-
-            <Footer />
-        </div>
-      </>
-    )
-  }
-
+  return (
+    <>
+      <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', }}>
+        <div class= "box">
+          <p>Welcome to Adventure Vault!</p></div>
+      </section>
+    </>
+  );
+};
 
 export default App;

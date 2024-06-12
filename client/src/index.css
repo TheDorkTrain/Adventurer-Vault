@@ -11,6 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --main-light: #F8F9F4;
+  --sub-light: #EFF8E2;
+  --main-color: #ADA8B6;
+  --main-decor: #23022E;
+  --sub-decor: #664e81;
+
 }
 
 a {
@@ -22,17 +28,73 @@ a:hover {
   color: #f72905;
 }
 
-body {
+body{
+  margin:0;
+}
+
+header {
+  display: flex;
+  margin: 0;
+  background: linear-gradient(90deg, rgba(173,168,182,1) 0%, var(--main-color) 41%, rgba(35,2,46,1) 85%);
+  border-bottom: 5px solid var(--main-decor);
+  color: black;
+ height: 135px;
+ width: 100%;
+}
+
+#title {
+  align-self: center;
+  display: flex;
+  margin: 0;
+  font-size: 3.2em;
+}
+
+#nav {
+  display:flex;
+  align-self: flex-end;
+  gap: 10px;
+  margin-left: auto;
+  flex-direction: column;
+}
+
+#dashboard {
+  align-self: flex-start;
+  margin-left: auto;
+  margin-right: 3px;
+  height: 30%;
+}
+
+#login {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 3px;
+  height: 30%;
+  width: 100%;
+}
+
+section {
+  background-color: var(--main-light);
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: space-around;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+#mainSection{
+  width:100%;
+}
+
+.box{
+  display: flex;
+  opacity: revert-layer;
+  background-color: var(--sub-decor);
+  margin-top: 20px;
+  height:50%;
+  width:50%;
+  justify-content: center;
+  border: 5px solid var(--main-decor);
+  
 }
 
 button {
@@ -42,7 +104,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--main-light);
+  color: var(--sub-color);
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -54,7 +117,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #473221;
     background-color: #ffffff;
@@ -65,4 +128,4 @@ button:focus-visible {
   button {
     background-color: #141414;
   }
-}
+} */

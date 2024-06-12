@@ -1,5 +1,4 @@
 const { Schema } = require('mongoose')
-// TODO: ?skillsSchema?, ?savingthrowSchema?
 
 const abilitySchema = new Schema({
   str:{

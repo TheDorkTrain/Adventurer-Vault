@@ -1,44 +1,66 @@
 // TODO: Create resolvers file
 
-const { Thought } = require('../models');
+const { User, Character } = require('../models');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    thoughts: async () => {
-      return Thought.find().sort({ createdAt: -1 });
+    character: async () => {
     },
-
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    
+    characters: async () => {
     },
   },
 
   Mutation: {
-    addThought: async (parent, { thoughtText, thoughtAuthor }) => {
-      return Thought.create({ thoughtText, thoughtAuthor });
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
     },
-    addComment: async (parent, { thoughtId, commentText }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
-        {
-          $addToSet: { comments: { commentText } },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
-    removeThought: async (parent, { thoughtId }) => {
-      return Thought.findOneAndDelete({ _id: thoughtId });
+
+    addCharacter: async (parent, { name, characterClass, level, lineage, background, abilities, skills, savingThrows, bio }, context) => {
     },
-    removeComment: async (parent, { thoughtId, commentId }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
-        { $pull: { comments: { _id: commentId } } },
-        { new: true }
-      );
+
+    addSpell: async (parent, { characterId, name, description }, context) => {
     },
+
+    addItem: async (parent, { characterId, name, description }, context) => {
+    },
+
+    addEntry: async (parent, { characterId, entry }, context) => {
+    },
+
+    updateCharacter: async (parent, { userId, characterId, name, characterClass, level, lineage, background, abilities, skills, savingThrows, bio }, context) => {
+    },
+
+    updateSpell: async (parent, { userId, spellId, name, description }, context) => {
+    },
+
+    updateItem: async (parent, { userId, itemId, name, description }, context) => {
+    },
+
+    updateEntry: async (parent, { userId, entryId, entry }, context) => {
+    },
+
   },
 };
 

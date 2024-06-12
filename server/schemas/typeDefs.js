@@ -1,7 +1,7 @@
 const typeDefs = `
   type User {
     _id: ID
-    name: String
+    username: String
     email: String
     characters: [Character]!
   }
@@ -41,14 +41,13 @@ const typeDefs = `
   type Character {
     _id: ID
     name: String!
-    class: String!
+    characterClass: String!
     level: Int!
     lineage: String!
     background: String
     abilities: Abilities!
-    # // TODO: Confirm how we want skills/saving throws to display.  bonus or just list of proficient skills?  potentially replace Skill with String
-    skills: [Skill]
-    savingThrows: [SavingThrow]
+    skills: [String]
+    savingThrows: [String]
     spells: [Spell]!
     items: [Item]!
     journal: [Entry]!
@@ -61,21 +60,19 @@ const typeDefs = `
   }
 
   type Query {
-    user: User
     character: Character
-    character: [Character]
+    characters: [Character]
   }
 
   type Mutation {
-  addUser(name: String!, email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
-  # // TODO: Change skill inputs and saving throw inputs to match decision
-  addCharacter(name: String!, class: String!, level: Int!, lineage: String!, background: String, abilities: AbilityInput!, skills: [SkillInput], savingThrows: [SavingThrowInput], bio: String): Character
+  addCharacter(name: String!, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: [String], savingThrows: [String], bio: String): Character
   addSpell(characterId: ID!, name: String!, description: String!): Spell
   addItem(characterId: ID!, name: String!, description: String!): Item
   addEntry(characterId: ID!, entry: String!): Entry
   # // ? Mutations for edits
-  updateCharacter(userId: ID!, characterId: ID!, name: String, class: String, level: Int, lineage: String, background: String, abilities: AbilityInput, skills: [SkillInput], savingThrows: [SavingThrowInput], bio: String): Character
+  updateCharacter(userId: ID!, characterId: ID!, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: [String], savingThrows: [String], bio: String): Character
   updateSpell(userId: ID!, spellId: ID!, name: String, description: String): Spell
   updateItem(userId: ID!, itemId: ID!, name: String, description: String): Item
   updateEntry(userId: ID!, entryId: ID!, entry: String!): Entry

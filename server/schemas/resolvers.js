@@ -1,3 +1,5 @@
+// TODO: Create resolvers file
+
 const { Thought } = require('../models');
 
 const resolvers = {

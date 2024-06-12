@@ -57,15 +57,15 @@ const data = {};
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
+                  placeholder="Your username"
+                  name="username"
+                  type="username"
+                  value={formState.username}
                   onChange={handleChange}
                 />
                 <input
                   className="form-input"
-                  placeholder="******"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}
@@ -76,7 +76,7 @@ const data = {};
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
-                  Present your action
+                  Present your completed task
                 </button>
               </form>
           

@@ -6,15 +6,8 @@ const Footer = () => {
 
     return (
       <footer className="w-100 mt-auto bg-secondary p-4">
-        <div className="container text-center mb-5">
+        <div className="container text-center mb-5"></div>
           {location.pathname !== '/' && (
-            <button
-              className="btn btn-dark mb-3"
-              onClick={() => navigate(-1)}
-            >
-              &larr; Go Back
-            </button>
-          )}
           <h4>
             Made with {'MERN'}
             <span
@@ -27,9 +20,10 @@ const Footer = () => {
               </span>{' '}
           by team 4
         </h4>
-      </div>
+        )}
     </footer>
   );
 };
+
 
 export default Footer;

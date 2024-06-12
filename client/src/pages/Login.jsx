@@ -1,16 +1,17 @@
 import { useState } from 'react'; 
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
 
+// import { useMutation } from '@apollo/client';
+// import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auths';
 
 // login component
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-
+  //const [login, { error, data }] = useMutation(LOGIN_USER);
+const error = {};
+const data = {};
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -45,8 +46,10 @@ const Login = () => {
 
 
   return (
-    <main className="flex-row justify-center mb-4">
+    // <section className="flex-row justify-center mb-4">
+    <>
       <div className="col-12 col-lg-10">
+      
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Initiating your character's journey</h4>
           <div className="card-body">
@@ -91,7 +94,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </main>
+    
+     </>
   );
 };
 

@@ -1,15 +1,16 @@
-import { useQuery } from '@apollo/client';
+//import { useQuery } from '@apollo/client';
 
-import { QUERY_USER } from '../path/to/queries'; // Add the missing import statement
+//import { QUERY_USER } from '../utils/queries'; // Add the missing import statement
 
 const Dashboard = () => {
 
-  const { loading, data } = useQuery(QUERY_USER);
-  const user = data?.me || {};
+  //const { loading, data } = useQuery(QUERY_USER);
+  //const user = data?.me || {};
+  const user = {};
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <> {/* Wrap the JSX code inside a fragment element */}
@@ -23,7 +24,7 @@ const Dashboard = () => {
         <div>
           <h2>Your Characters</h2>
           <ul>
-            {user.characters.map((character) => (
+            {user.characters?.map((character) => (
               <li key={character._id}>
                 <h3>{character.name}</h3>
                 <p>Class: {character.class}</p>

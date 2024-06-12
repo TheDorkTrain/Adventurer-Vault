@@ -1,38 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import Home from './pages/Home'
 
-function App() { 
-  const [count, setCount] = useState(0) 
 
-  return (
-    <>
-      <div>
-        <a href="" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+  import './App.css'
 
-      <h1>Adventurer Vault</h1>
-      <div className="card">
-        <button className="btn btn-lg btn-info m-2" to="/login">
-          Login
-        </button>
-        <button className="btn btn-lg btn-light m-2" to="/signup">
-          Signup
-        </button>
-      </div>
 
-      
-      <p className="read-the-docs">
-      
-      </p>
-    </>
-  )
-}
+  function App() { 
+    return (
+      <>
+        <h1>Adventurer Vault</h1>
+        <div className="card">
+          <button>
+          <a className="btn btn-lg btn-info m-2" href="/login">
+            Enter the realm
+          </a>
+          </button>
+          <button>
+          <a className="btn btn-lg btn-light m-2" href="/signup">
+            Initiate your journey
+          </a>
+          </button>
+        </div>
 
-export default App
+        <div className="app">
+          <Header/>
+          <main/>
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/login" element={<Login/>} />
+              <Route path="/signup" element={<Signup/>} />
+              <Route path="/error" element={<ErrorPage/>} />
+            </Routes>
+
+            <Footer />
+        </div>
+      </>
+    )
+  }
+
+
+export default App;

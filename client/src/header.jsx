@@ -15,8 +15,8 @@ function Header() {
   return (
     <> <header> <img src="./src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault"/>
     <nav id="nav">
-   <button class="button ribbon-outset border" id="dashboard">DashBoard</button>
-   <button class="button ribbon-outset border" id="login">Log Out</button>
+   <button class="button ribbon-outset border" id="login">Gain Entry</button>
+
    </nav>
     </header> 
    </>

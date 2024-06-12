@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import backgroundImage1 from './assets/background_maps/map1.jpg';
 import backgroundImage2 from './assets/background_maps/map2.jpg';
+import signup from './pages/Signup';
+import { ApolloClient, ApolloProvider } from '@apollo/client';
+import Signup from './pages/Signup';
 
 const App = () => {
   const [randomImage, setRandomImage] = useState('');
@@ -11,6 +14,7 @@ const App = () => {
     setRandomImage(randomImage);
   }, []);
 
+
   return (
     <>
       <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', }}>
@@ -18,6 +22,8 @@ const App = () => {
           <p>Welcome to Adventure Vault!</p></div>
       </section>
     </>
+
+
   );
 };
 

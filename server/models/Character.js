@@ -1,5 +1,3 @@
-// TODO: Finish Character model
-// TODO: ?skillsSchema?, ?savingthrowSchema?
 const {
   abilitySchema,
   spellSchema,
@@ -12,7 +10,6 @@ const characterSchema = new Schema({
   name: {
     type: String,
     required: true,
-    minlength: 1,
     trim: true,
   },
   class: {
@@ -32,13 +29,16 @@ const characterSchema = new Schema({
     type: abilitySchema,
     required: true
   },
-  // TODO: Edit after decision made
-  skils: [ skillSchema ],
-  savingThrows: [ savingThrowSchema ],
+  skills: [ String ],
+  savingThrows: [ String ],
   spells: [ spellSchema ],
   items: [ itemSchema ],
   journal: [ entrySchema ],
-  bio: String
+  bio: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 const Character = model('Character', characterSchema);

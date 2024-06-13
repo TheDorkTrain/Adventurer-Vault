@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// TODO: What should display from each request?  Pick the most if it is re-used
 export const QUERY_USER = gql`
     query Me {
         me {

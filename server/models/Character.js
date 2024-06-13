@@ -29,8 +29,8 @@ const characterSchema = new Schema({
     type: abilitySchema,
     required: true
   },
-  skills: [ String ],
-  savingThrows: [ String ],
+  skills: String,
+  savingThrows: String,
   spells: [ spellSchema ],
   items: [ itemSchema ],
   journal: [ entrySchema ],

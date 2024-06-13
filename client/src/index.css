@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(15, 15, 14, 0.87);
+  color: var(--main-decor);
   background-color: #242424;
 
   font-synthesis: none;
@@ -92,6 +92,10 @@ section {
 
 #mainSection{
   width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+ 
 }
 
 .box{
@@ -101,9 +105,27 @@ section {
   margin-top: 20px;
   height:50%;
   width:50%;
+  justify-content: space-around;
+  border: 5px solid var(--main-decor);
+  
+}
+.box2{
+  display: flex;
+  opacity: revert-layer;
+  background-color: var(--sub-decor);
+  margin-top: 20px;
+  height:50%;
+  width:25%;
   justify-content: center;
   border: 5px solid var(--main-decor);
   
+}
+
+#subbutt {
+display: flex;
+justify-content: center;
+gap:40px;
+align-items: flex-start;
 }
 
 button {

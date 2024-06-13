@@ -13,7 +13,7 @@ const Footer = () => {
             <span
               className="emoji"
               role="img"
-              aria-label="heart"
+              aria-label="sword"
               aria-hidden="false"
             >
               ⚔️

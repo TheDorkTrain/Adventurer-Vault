@@ -3,6 +3,7 @@ import backgroundImage1 from '../assets/background_maps/map1.jpg';
 import backgroundImage2 from '../assets/background_maps/map2.jpg';
 import DiceRoller from '../components/DiceRoller.jsx';
 
+
 const Create= () => {
   const [randomImage, setRandomImage] = useState('');
   const [results, setResults] = useState([]);

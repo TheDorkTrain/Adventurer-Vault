@@ -5,8 +5,7 @@ export const QUERY_USER = gql`
         me {
             _id
             username
-            characters
-            {
+            characters {
                 _id
                 name
                 image
@@ -27,10 +26,10 @@ export const QUERY_USER = gql`
             }
         }
     }
-    `;
+`;
 
 export const QUERY_CHARACTERS = gql`
-    {
+    query AllCharacters {
         characters {
             _id
             name
@@ -38,8 +37,45 @@ export const QUERY_CHARACTERS = gql`
             characterClass
             level
             lineage
-            abilities
         }
     }
 `;
 
+export const QUERY_ONE_CHARACTER = gql`
+    query OneCharacter {
+        characters {
+            _id
+            name
+            image
+            characterClass
+            level
+            lineage
+            background
+            bio
+            abilities {
+                str
+                dex
+                con
+                int
+                wis
+                cha
+            }
+            skills
+            savingThrows
+            spells {
+                _id
+                name
+                description
+            }
+            items {
+                _id
+                name
+                description
+            }
+            journal {
+                _id
+                entry
+            }
+        }
+    }
+`;

@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import Header from './header.jsx'
-// import Signup from './pages/Signup.jsx'
 import Create from './pages/Create.jsx'
 
 import './index.css'
@@ -27,9 +25,9 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      // }, {
-      //   path: '/thoughts/:thoughtId',
-      //   element: <SingleThought />
+      }, {
+       path: '/create',
+      element: <Create/>
       }
     ]
   },
@@ -38,9 +36,6 @@ const router = createBrowserRouter([
 
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <Create />
-  </React.StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router} />
+
 );

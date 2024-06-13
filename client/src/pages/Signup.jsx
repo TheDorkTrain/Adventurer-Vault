@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -33,13 +33,10 @@ const Signup = () => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Embark on your adventure</h4>
+          <h4 className="card-header bg-dark text-light p-2">Signup to embark on your journey</h4>
           <div className="card-body">
           <form onSubmit={handleFormSubmit}>
-          <p>
-                  Success! You've successfully established your account within the realm.{' '}
-                  <Link to="/">back to the adventure's hub.</Link>
-                </p>
+     
               <input
                 className="form-input"
                 placeholder="Your username"
@@ -50,14 +47,14 @@ const Signup = () => {
               />
               <input
                 className="form-input"
-                placeholder="******"
+                placeholder="password"
                 name="password"
                 type="password"
                 value={formState.password}
                 onChange={handleChange}
               />
               <button className="btn d-block w-100" type="submit">
-                Submit
+                Signup
               </button>
             </form>
           </div>

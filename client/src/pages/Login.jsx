@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/header';
 // import { useMutation } from '@apollo/client';
 // import { LOGIN_USER } from '../utils/mutations';
+import React, { useEffect } from 'react';
+
 
 import Auth from '../utils/auths';
 
@@ -21,6 +23,8 @@ const data = {};
       [name]: value,
     });
   };
+
+
 
   // submit form
   const handleFormSubmit = async (event) => {
@@ -43,43 +47,37 @@ const data = {};
     });
   };
 
-
-
   return (
-    // <section className="flex-row justify-center mb-4">
     <>
-
       <div className="col-12 col-lg-10">
-      
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2"></h4>
           <div className="card-body">
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="username"
-                  value={formState.username}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="password"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Present your completed task
-                </button>
-              </form>
-          
+            <form onSubmit={handleFormSubmit}>
+              <input
+                className="form-input"
+                placeholder="Your username"
+                name="username"
+                type="username"
+                value={formState.username}
+                onChange={handleChange}
+              />
+              <input
+                className="form-input"
+                placeholder="password"
+                name="password"
+                type="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
+              <button
+                className="btn btn-block btn-primary"
+                style={{ cursor: 'pointer' }}
+                type="submit"
+              >
+            <Link to="/">Present your completed task</Link>
+              </button>
+            </form>
 
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
@@ -89,9 +87,10 @@ const data = {};
           </div>
         </div>
       </div>
-    
-     </>
+
+     
+    </>
   );
-};
+}
 
 export default Login;

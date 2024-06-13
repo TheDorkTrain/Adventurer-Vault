@@ -24,7 +24,7 @@ export const ADD_USER = gql`
 
 // TODO: What all do we want to display after character creation?
 export const ADD_CHARACTER = gql`
-    mutation AddCharacter($name: String!, $characterClass: String!, $level: Int!, $lineage: String!, $abilities: AbilitiesInput!, $image: String, $background: String, $skills: [String], $savingThrows: [String], $bio: String) {
+    mutation AddCharacter($name: String!, $characterClass: String!, $level: Int!, $lineage: String!, $abilities: AbilitiesInput!, $image: String, $background: String, $skills: String, $savingThrows: String, $bio: String) {
         addCharacter(name: $name, characterClass: $characterClass, level: $level, lineage: $lineage, abilities: $abilities, image: $image, background: $background, skills: $skills, savingThrows: $savingThrows, bio: $bio) {
             _id
             name

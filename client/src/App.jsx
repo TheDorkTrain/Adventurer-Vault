@@ -1,17 +1,18 @@
 
-import Header from './components/header';
-import Footer from './components/Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, BrowserRouter } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+
 import { setContext } from '@apollo/client/link/context';
 import AllCharacters from './pages/AllCharacters';
 
-
+import Header from './components/header';
+import Footer from './components/Footer';
+import './App.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -32,8 +33,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
 const App = () => {
 
   const classNames = ['map1', 'map2', 'map3', 'map4', 'map5', 'map6', 'map7', 'map8', 'map9', 'map10'];
@@ -42,17 +41,15 @@ const App = () => {
   const randomClass = classNames[Math.floor(Math.random() * classNames.length)];
 
   return (
+    <>
     <ApolloProvider client={client}>
-    <div className={randomClass}>
-
       <Header />
-      <Outlet />
-      <AllCharacters />
-      <Footer />
-
-   
-    </div>
+      <div className={randomClass}>
+        <Outlet />
+      </div>
     </ApolloProvider>
+    <Footer />
+    </>
   );
 
 };

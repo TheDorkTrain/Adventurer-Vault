@@ -1,18 +1,42 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApolloProvider } from '@apollo/client';
-import client from './apolloClient';
+import ReactDOM from 'react-dom/client'
 import App from './App.jsx';
-import Header from './header.jsx';
 import Create from './pages/Create.jsx';
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <React.StrictMode>
-      <Header />
-      <App />
-      <Create />
-    </React.StrictMode>
-  </ApolloProvider>,
-  document.getElementById('root')
-);
+import './index.css'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from './pages/Login';
+import ErrorPage from './pages/ErrorPage';
+import Dashboard from './pages/Dashboard';
+import Signup from './pages/Signup';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />
+      }, {
+        path: '/login',
+        element: <Login />
+      }, {
+        path: '/signup',
+        element: <Signup />
+      // }, {
+      //   path: '/thoughts/:thoughtId',
+      //   element: <SingleThought />
+      },
+      {
+        path:'/create',
+        element: <Create />
+      }
+    ]
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
+)

@@ -13,13 +13,28 @@ const IncreasingHeader = ({ text }) => {
   );
 };
 
+function RenderComponent({ type }) {
+  switch (type) {
+      case '/':
+          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
+      case '/login':
+          return <button className="button ribbon-outset border" id="login">Gain Entry</button>
+      case '/signup':
+          return <button className="button ribbon-outset border" id="login">Gain Entry</button>
+      case '/create':
+          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>, <button className="button ribbon-outset border" id="logout">DashBoard</button>
+      default:
+          return null;
+  }
+}
+
 function Header() {
 
 
   return (
     <> <header> <img src="./src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
       <nav id="nav">
-        <button className="button ribbon-outset border" id="login">Gain Entry</button>
+      <RenderComponent type={location.pathname} />
       </nav>
     </header>
     </>

@@ -16,14 +16,15 @@ const App = () => {
   const randomClass = classNames[Math.floor(Math.random() * classNames.length)];
 
   return (
- 
+    <>
+    <Header />
     <div className={randomClass}>
 
-      <Header />
+      
       <Outlet />
-      <Footer />
-
     </div>
+    <Footer />
+    </>
   );
 
 };

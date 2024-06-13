@@ -25,16 +25,19 @@ const typeDefs = `
   }
 
   type Spell {
+    _id: ID
     name: String
     description: String
   }
 
   type Item {
+    _id: ID
     name: String
     description: String
   }
 
   type Entry {
+    _id: ID
     entry: String
   }
 
@@ -62,7 +65,7 @@ const typeDefs = `
 
   type Query {
     me: User
-    character: Character
+    character( characterId: ID!): Character
     characters: [Character]
   }
 
@@ -70,19 +73,19 @@ const typeDefs = `
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
   addCharacter(name: String!, image: String, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: [String], savingThrows: [String], bio: String): Character
-  addSpell(characterId: ID!, name: String!, description: String!): Spell
-  addItem(characterId: ID!, name: String!, description: String!): Item
-  addEntry(characterId: ID!, entry: String!): Entry
+  addSpell(characterId: ID!, name: String!, description: String!): Character
+  addItem(characterId: ID!, name: String!, description: String!): Character
+  addEntry(characterId: ID!, entry: String!): Character
   # // ? Mutations for edits
   updateCharacter(characterId: ID!, image: String, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: [String], savingThrows: [String], bio: String): Character
-  updateSpell(characterId: ID!, spellId: ID!, name: String, description: String): Spell
-  updateItem(characterId: ID!, itemId: ID!, name: String, description: String): Item
-  updateEntry(characterId: ID!, entryId: ID!, entry: String!): Entry
+  updateSpell(characterId: ID!, spellId: ID!, name: String!, description: String!): Character
+  updateItem(characterId: ID!, itemId: ID!, name: String!, description: String!): Character
+  updateEntry(characterId: ID!, entryId: ID!, entry: String!): Character
   # // ? Mutations for deletion
   deleteCharacter(characterId: ID!): Character
-  deleteSpell(characterId: ID!, spellId: ID!): Spell
-  deleteItem(characterId: ID!, itemId: ID!): Item
-  deleteEntry(characterId: ID!, entryId: ID!): Entry
+  deleteSpell(characterId: ID!, spellId: ID!): Character
+  deleteItem(characterId: ID!, itemId: ID!): Character
+  deleteEntry(characterId: ID!, entryId: ID!): Character
   }
 `;
 

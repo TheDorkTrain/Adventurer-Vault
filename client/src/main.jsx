@@ -25,9 +25,6 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      // }, {
-      //   path: '/thoughts/:thoughtId',
-      //   element: <SingleThought />
       },
       {
         path:'/create',

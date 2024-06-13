@@ -112,6 +112,18 @@ section {
   
 }
 
+#formLabel{
+  display: flex; 
+  flex-direction: row; 
+  gap: 10px ;
+  justify-content: space-between;
+}
+
+#formInput{
+  width: 40%; 
+  height: 80%;
+}
+
 #subbutt {
 display: flex;
 justify-content: center;

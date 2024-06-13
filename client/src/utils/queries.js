@@ -43,3 +43,5 @@ export const QUERY_CHARACTERS = gql`
     }
 `;
 
+
+

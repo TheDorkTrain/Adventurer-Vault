@@ -6,6 +6,7 @@ import { useMutation } from '@apollo/client';
 
 import { ADD_CHARACTER } from '../utils/mutations';
 
+
 const Create= () => {
   const [randomImage, setRandomImage] = useState('');
   const [results, setResults] = useState([]);

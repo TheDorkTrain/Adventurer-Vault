@@ -1,5 +1,3 @@
-// TODO: Create resolvers file
-
 const { User, Character } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
@@ -9,10 +7,13 @@ const resolvers = {
       return await User.findById(context.user._id).populate('characters');
     },
 
-    character: async () => {
+    character: async (parent, { characterId }) => {
+      return await Character.findById(characterId).populate('abilities').populate('skills').populate('savingThrows').populate('spells').populate('items').populate('journal');
     },
     
     characters: async () => {
+      // TODO: Populate?  What needs to be displayed?
+      return await Character.find();
     },
   },
 
@@ -60,39 +61,38 @@ const resolvers = {
 
     addSpell: async (parent, { characterId, name, description }, context) => {
       if (context.user) {
-        return Character.findOneAndUpdate(
+        return await Character.findOneAndUpdate(
           { _id: characterId },
           { $addToSet: { spells: { name, description } } },
           { new: true }
-        )
+        ).populate('spells');
       }
-      throw AuthenticationError
+      throw AuthenticationError;
     },
 
     addItem: async (parent, { characterId, name, description }, context) => {
       if (context.user) {
-        return Character.findOneAndUpdate(
+        return await Character.findOneAndUpdate(
           { _id: characterId },
           { $addToSet: { items: { name, description } } },
           { new: true }
-        )
+        ).populate('items');
       }
-      throw AuthenticationError
+      throw AuthenticationError;
     },
 
     addEntry: async (parent, { characterId, entry }, context) => {
       if (context.user) {
         return Character.findOneAndUpdate(
           { _id: characterId },
-          { $addToSet: { spells: { entry } } },
+          { $addToSet: { journal: { entry } } },
           { new: true }
-        )
+        ).populate('journal');
       }
-      throw AuthenticationError
+      throw AuthenticationError;
     },
 
     updateCharacter: async (parent, args, context) => {
-      // args = { characterId, name, characterClass, level, lineage, background, abilities, skills, savingThrows, bio }
       const updateObject = {};
       for (const [key, value] of Object.entries(args)) {
         if (value && !key.endsWith('Id')) {
@@ -112,14 +112,107 @@ const resolvers = {
       throw AuthenticationError;
     },
 
-    updateSpell: async (parent, { userId, spellId, name, description }, context) => {
+    updateSpell: async (parent, args, context) => {
+      const updateObject = { _id: args.spellId };
+      for (const [key, value] of Object.entries(args)) {
+        if (value && !key.endsWith('Id')) {
+          updateObject[key] = value;
+        }
+      }
+
+      const character = await Character.findById(args.characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: args.characterId },
+          { $set: { "spells.$[spell]": { ...updateObject } } },
+          { arrayFilters: [ { "spell._id": args.spellId } ] , new: true, runValidators: false }
+        ).populate('spells');
+      }
+      throw AuthenticationError;
     },
 
-    updateItem: async (parent, { userId, itemId, name, description }, context) => {
+    updateItem: async (parent, args, context) => {
+      const updateObject = { _id: args.itemId };
+      for (const [key, value] of Object.entries(args)) {
+        if (value && !key.endsWith('Id')) {
+          updateObject[key] = value;
+        }
+      }
+      
+      const character = await Character.findById(args.characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: args.characterId },
+          { $set: { "items.$[item]": { ...updateObject } } },
+          { arrayFilters: [ { "item._id": args.itemId } ] , new: true, runValidators: false }
+        ).populate('items');
+      }
+      throw AuthenticationError;
     },
 
-    updateEntry: async (parent, { userId, entryId, entry }, context) => {
+    updateEntry: async (parent, { characterId, entryId, entry }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: characterId },
+          { $set: { "journal.$[entry]": { _id: entryId, entry } } },
+          { arrayFilters: [ { "entry._id": entryId } ] , new: true, runValidators: true }
+        ).populate('journal');
+      }
+      throw AuthenticationError;
     },
+
+    deleteCharacter: async (parent, { characterId }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findByIdAndDelete(characterId);
+      }
+      throw AuthenticationError;
+    },
+
+    deleteSpell: async (parent, { characterId, spellId }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: characterId },
+          { $pull: { spells: { _id: spellId } } },
+          { new: true, runValidators: true }
+        ).populate('spells');
+      }
+      throw AuthenticationError;
+    },
+
+    deleteItem: async (parent, { characterId, itemId }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: characterId },
+          { $pull: { items: { _id: itemId } } },
+          { new: true, runValidators: true }
+        ).populate('items');
+      }
+      throw AuthenticationError;
+    },
+
+    deleteEntry: async (parent, { characterId, entryId }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: characterId },
+          { $pull: { journal: { _id: entryId } } },
+          { new: true, runValidators: true }
+        ).populate('journal');
+      }
+      throw AuthenticationError;
+    },
+
 
   },
 };

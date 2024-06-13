@@ -20,12 +20,12 @@
 }
 
 a {
-  font-weight: 500;
+  font-weight: 800;
   color: #dd8109;
   text-decoration: inherit;
 }
 a:hover {
-  color: #f72905;
+  color: #5e065c;
 }
 
 body{
@@ -34,13 +34,22 @@ body{
 
 header {
   display: flex;
+  justify-content: center;
   margin: 0;
   background: linear-gradient(90deg, rgba(173,168,182,1) 0%, var(--main-color) 41%, rgba(35,2,46,1) 85%);
   border-bottom: 5px solid var(--main-decor);
   color: black;
- height: 135px;
- width: 100%;
+  height: 135px;
+  width: 65vw;
 }
+
+
+.App{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100% !important;
+} 
 
 #title {
   align-self: center;
@@ -121,23 +130,46 @@ align-items: flex-start;
 
 button {
   border-radius: 8px;
+  color: rgb(80, 12, 80);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--main-light);
-  color: var(--sub-color);
+  background-color: rgba(244, 232, 244, 0.844);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #f02207;
+  border-color: #771d77;
+  border-width: 2px;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+footer {
+  display: flex;
+  text-align: center;
+  justify-content: bottom;
+  align-items: center;
+  background-color: var(--main-decor);
+  color: var(--main-light);
+  height: 50px;
+  width: 135vh;
+  position: fixed;
+  bottom: 0;
+}
+
+h4 {
+  font-size: 1.2em;
+  text-align: center;
+  color: #ead0f1;
+  font-weight: 500;
+  margin: 0 auto; /* Add this line to center the element horizontally */
+}
+
 
 /* @media (prefers-color-scheme: light) {
   :root {

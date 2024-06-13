@@ -1,10 +1,35 @@
-import { Outlet, BrowserRouter } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import backgroundImage1 from './assets/background_maps/map1.jpg';
-import backgroundImage2 from './assets/background_maps/map2.jpg';
+
 import Header from './components/header';
 import Footer from './components/Footer';
-import './App.css';
+import { Outlet } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 
 
@@ -16,14 +41,15 @@ const App = () => {
   const randomClass = classNames[Math.floor(Math.random() * classNames.length)];
 
   return (
- 
+    <ApolloProvider client={client}>
     <div className={randomClass}>
 
       <Header />
       <Outlet />
       <Footer />
-
+   
     </div>
+    </ApolloProvider>
   );
 
 };

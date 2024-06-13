@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', }}>
-        <div class= "box">
+        <div className= "box">
           <p>Welcome to Adventure Vault!</p></div>
       </section>
     </>

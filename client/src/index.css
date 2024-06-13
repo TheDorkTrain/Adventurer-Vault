@@ -138,8 +138,11 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: rgba(93, 54, 93, 0.844);
+
+
   cursor: pointer;
   transition: border-color 0.25s;
+ 
 }
 button:hover {
   border-color: #4c494c;

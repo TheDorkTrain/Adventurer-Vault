@@ -9,6 +9,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import AllCharacters from './pages/AllCharacters';
 
 
 
@@ -46,7 +47,9 @@ const App = () => {
 
       <Header />
       <Outlet />
+      <AllCharacters />
       <Footer />
+
    
     </div>
     </ApolloProvider>

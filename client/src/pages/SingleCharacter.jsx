@@ -132,7 +132,6 @@ function SingleCharacter() {
     }
   }
 
-
   return (
     <div style={{ display: "flex", justifyContent: "space-around" }}>
       <article style={styles.primaryInfo}>

@@ -35,6 +35,7 @@ const Login = () => {
       });
 
       Auth.login(data.login.token);
+      <Link to="/"></Link>
     } catch (e) {
       console.error(e);
     }
@@ -73,8 +74,9 @@ const Login = () => {
                 className="btn btn-block btn-primary"
                 style={{ cursor: 'pointer' }}
                 type="submit"
+                onClick={handleFormSubmit}
               >
-            <Link to="/">Present your completed task</Link>
+            Present your completed task
               </button>
             </form>
 

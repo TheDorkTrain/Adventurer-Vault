@@ -74,7 +74,7 @@ const Create= () => {
     <>
       <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
         <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center'}}>
-          <div style={{ display: 'flex', flexDirection: 'column', width:'55%', fontWeight: 'bold'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', width:'55%',  gap: '2px', fontWeight: 'bold'}}>
           <label id="formLabel">Character Name:  <input value={name} onChange={(event) => setName(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Class:  <input value={characterClass} onChange={(event) => setCharacterClass(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Lineage:  <input value={lineage} onChange={(event) => setLineage(event.target.value)} id="formInput" /></label>

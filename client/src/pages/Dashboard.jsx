@@ -7,6 +7,7 @@ import Create from './Create'; // Add the missing import statement
 const Dashboard = () => {
 
   const { loading, data } = useQuery(QUERY_USER);
+
   const user = data?.me || {};
 
   if (loading) {

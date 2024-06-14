@@ -9,7 +9,8 @@ import {
 
 import { setContext } from '@apollo/client/link/context';
 import AllCharacters from './pages/AllCharacters';
-
+import bgMaps from './utils/bgMaps'
+bgMaps()
 import Header from './components/header';
 import Footer from './components/Footer';
 import './App.css';

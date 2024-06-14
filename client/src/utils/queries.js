@@ -43,8 +43,8 @@ export const QUERY_CHARACTERS = gql`
 `;
 
 export const QUERY_ONE_CHARACTER = gql`
-    query OneCharacter {
-        characters {
+    query OneCharacter($characterId: ID!) {
+        character(characterId: $characterId) {
             _id
             name
             image

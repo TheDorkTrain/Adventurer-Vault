@@ -10,6 +10,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import AllCharacters from './pages/AllCharacters';
+import ImageUpload from './components/ImageUpload';
+
 
 
 
@@ -48,14 +50,17 @@ const App = () => {
       <Header />
       <Outlet />
       <AllCharacters />
+      <ImageUpload />
       <Footer />
 
    
     </div>
     </ApolloProvider>
+
   );
 
-};
+}
+
 
 export default App;
 

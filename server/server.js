@@ -1,12 +1,13 @@
-const express = require('express');
+const express = require ('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -21,6 +22,15 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   
+  app.post ('/api/image', upload.single('image'),(req, res) => {
+    console.log(req.file);
+    if(!req.file){
+        res.send({ code : 400, message : 'No file uploaded' });
+    }else{
+        res.send({ code : 200, message : 'File uploaded successfully' });
+    }
+    
+});
   app.use('/graphql', expressMiddleware(server, {
     context: authMiddleware
   }));
@@ -40,6 +50,8 @@ const startApolloServer = async () => {
     });
   });
 };
+
+
 
 // Call the async function to start the server
 startApolloServer();

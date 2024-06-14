@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import backgroundImage1 from '../assets/background_maps/map1.jpg';
 import backgroundImage2 from '../assets/background_maps/map2.jpg';
 import DiceRoller from '../components/DiceRoller.jsx';
+import { Link } from 'react-router-dom';
+import ImageUpload from '../components/ImageUpload.jsx';
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER } from '../utils/mutations';
 
@@ -12,13 +14,6 @@ const Create= () => {
   const [addCharacter] = useMutation(ADD_CHARACTER)
   const [randomImage, setRandomImage] = useState('');
   const [results, setResults] = useState([]);
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [show2, setShow2] = useState(false);
-  const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
 
   const [name, setName] = useState('');
   const [characterClass, setCharacterClass] = useState('');
@@ -94,8 +89,7 @@ const Create= () => {
           <input placeholder="Second Wind, Action Surge, Fighting Style, Etc" style={{width: '95%', height: '80%'}} /> */}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
-          <label>Upload Picture: </label>
-          {/*<input type="file"  accept="image/*" name="image" id="file"  onChange="loadFile(event)" />*/}
+          <ImageUpload />            
           <label>Character Summary:</label>
           <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
             

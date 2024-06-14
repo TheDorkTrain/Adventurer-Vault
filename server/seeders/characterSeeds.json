@@ -15,9 +15,14 @@
       "wis": 14,
       "cha": 14
     },
-    "skills": "Nature",
+    "skills": "Nature, Sleight of Hand, Mimicry",
     "savingThrows": "Int, Wis",
     "spells": [
+      {
+        "_id": "666c793cf3aefd4dffa0193c",
+        "name": "Thorn Whip",
+        "description": "You create a long, vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. If the attack hits, the creature takes 1d6 piercing damage, and if the creature is Large or smaller, you pull the creature up to 10 feet closer to you."
+      },
       {
         "_id": "6669ed09f5109dd88efc0334",
         "name": "Spike Growth",

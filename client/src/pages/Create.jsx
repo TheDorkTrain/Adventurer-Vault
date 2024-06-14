@@ -3,6 +3,7 @@ import backgroundImage1 from '../assets/background_maps/map1.jpg';
 import backgroundImage2 from '../assets/background_maps/map2.jpg';
 import DiceRoller from '../components/DiceRoller.jsx';
 import { Link } from 'react-router-dom';
+import ImageUpload from '../components/ImageUpload.jsx';
 
 const Create= () => {
   const [randomImage, setRandomImage] = useState('');
@@ -42,8 +43,7 @@ const Create= () => {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
           <label>Upload Picture: </label>
-          <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)"></input>
-            
+          <ImageUpload />            
           </div>
           
         </div>

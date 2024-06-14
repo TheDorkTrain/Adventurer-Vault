@@ -9,8 +9,9 @@ function ImageUpload (){
         console.log(e.target.files);
         setImage(e.target.files[0]);
     }
-    const handleAPI = async () => {
+    const handleAPI = async (e) => {
         //call the API
+        handleChange(e);
         const url = 'http://localhost:3001/api/image'
         const formData = new FormData()
         formData.append('image', image)
@@ -22,8 +23,7 @@ function ImageUpload (){
         <div>
             <img width={100} src={image === '' ? '' : URL.createObjectURL(image)} />        
             <h1>Image Upload</h1>
-            <input type="file" onChange={handleChange} />
-         <button onClick={handleAPI}> Submit </button>
+            <input type="file" onChange={handleAPI} />
         </div>
     );
 }

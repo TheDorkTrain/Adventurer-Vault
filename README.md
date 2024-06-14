@@ -2,7 +2,7 @@
 
 # Description 📝
 
-Adventure Vault is a Dungeons & Dragons character storage application allows users to store their sheets, magic items, and create journals.
+Adventure Vault is a Dungeons & Dragons character storage application that allows users to store their sheets, magic items, and create journals.
 
 # Table of Contents 📚
 
@@ -69,3 +69,8 @@ Licensed under the MIT license. Copyright @ MIT. All rights reserved.
 
 - [EmojiPedia](https://emojipedia.org/)
 - [Bootstrap](https://getbootstrap.com/)
+- [Express](https://www.npmjs.com/package/express)
+- [Render](https://render.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Multer](https://www.npmjs.com/package/multer)
+- [D&D](https://www.dndbeyond.com/)

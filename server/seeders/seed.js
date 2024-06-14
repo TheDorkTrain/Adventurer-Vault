@@ -11,8 +11,14 @@ db.once('open', async () => {
 
   await User.create(userSeeds);
   
-  await Character.create(characterSeeds);
+  const characters = await Character.create(characterSeeds);
 
+  const newUser = await User.findOneAndUpdate(
+    { _id: characters[0].user },
+    { $addToSet: { characters: characters[0]._id } },
+    {new:true}
+  )
+  console.log(newUser)
   console.log('all done!');
   process.exit(0);
 });

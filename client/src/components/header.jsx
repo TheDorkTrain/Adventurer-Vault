@@ -17,7 +17,7 @@ const IncreasingHeader = ({ text }) => {
 
   const handleLogout = () => {
     // Clear the session/token stored in localStorage
-    localStorage.removeItem('token');
+    localStorage.removeItem('id_token');
     
     // Redirect the user to the login page
     window.location.href = '/login';

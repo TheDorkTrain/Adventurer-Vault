@@ -7,6 +7,7 @@ import Create from './Create'; // Add the missing import statement
 const Dashboard = () => {
 
   const { loading, data } = useQuery(QUERY_USER);
+
   const user = data?.me || {};
 
   if (loading) {
@@ -26,7 +27,7 @@ const Dashboard = () => {
           <ul style={{listStyleType: 'none'}}>
             {user.characters?.map((character) => (
               <li key={character._id}>
-                <h3>{character.name}</h3>
+                <Link to={`/character/${character._id}`}><h3>{character.name}</h3></Link>
                 {/* <p>Class: {character.class}</p>
                 <p>Level: {character.level}</p>
                 <p>Lineage:

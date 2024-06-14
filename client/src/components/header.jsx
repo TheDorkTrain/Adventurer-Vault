@@ -34,7 +34,7 @@ function Header() {
 
 
   return (
-    <> <header> <img src="./src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
+    <> <header> <img src="/src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
       <nav id="nav">
       <RenderComponent type={location.pathname} />
       </nav>

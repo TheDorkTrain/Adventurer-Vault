@@ -20,11 +20,6 @@ const Dashboard = () => {
     
 
     <>
-      <header>
-        <nav id="nav">
-          <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button> {/* Use className instead of class */}
-        </nav>
-      </header>
       <div>
         <h1>{user.username}'s Dashboard</h1>
         <div>

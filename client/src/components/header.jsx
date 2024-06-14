@@ -13,16 +13,18 @@ const IncreasingHeader = ({ text }) => {
   );
 };
 
+//TODO Separate Log out and Dashboard buttons
+
 function RenderComponent({ type }) {
   switch (type) {
       case '/':
           return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
       case '/login':
-          return <button className="button ribbon-outset border" id="login">Gain Entry</button>
+          return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>
       case '/signup':
-          return <button className="button ribbon-outset border" id="login">Gain Entry</button>
+          return <button className="button ribbon-outset border" id="login"><Link to="/signup">Gain Entry</Link></button>
       case '/create':
-          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>, <button className="button ribbon-outset border" id="logout">DashBoard</button>
+          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>, <button className="button ribbon-outset border" id="logout"><Link to="/signup">Back to Camp</Link></button>
       default:
           return null;
   }

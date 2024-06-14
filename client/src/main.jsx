@@ -10,6 +10,7 @@ import ErrorPage from './pages/ErrorPage';
 import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import AllCharacters from './pages/AllCharacters.jsx'
+import SingleCharacter from './pages/SingleCharacter.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,14 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, {
-       path: '/create',
-      element: <Create/>
-    }, {
-      path: '/allcharacters',
-     element: <AllCharacters/>
+        path: '/create',
+        element: <Create/>
+      }, {
+        path: '/allcharacters',
+        element: <AllCharacters/>
+      }, {
+        path: '/character/:characterId',
+        element: <SingleCharacter/>
       }
     ]
   },

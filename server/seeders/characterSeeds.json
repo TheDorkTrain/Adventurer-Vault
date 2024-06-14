@@ -1,0 +1,43 @@
+[
+  {
+    "_id": "6669e8485e01f92cdd3c8954",
+    "name": "leaves.mp3",
+    "image": null,
+    "characterClass": "Druid",
+    "level": 7,
+    "lineage": "Kenku",
+    "background": null,
+    "abilities": {
+      "str": 14,
+      "dex": 14,
+      "con": 14,
+      "int": 14,
+      "wis": 14,
+      "cha": 14
+    },
+    "skills": "Nature",
+    "savingThrows": "Int, Wis",
+    "spells": [
+      {
+        "_id": "6669ed09f5109dd88efc0334",
+        "name": "Spike Growth",
+        "description": "The ground in a 20-foot radius centered on a point within range twists and sprouts hard spikes and thorns. The area becomes difficult terrain for the duration. When a creature moves into or within the area, it takes 2d4 piercing damage for every 5 feet it travels.  The transformation of the ground is camouflaged to look natural. Any creature that can't see the area at the time the spell is cast must make a Wisdom (Perception) check against your spell save DC to recognize the terrain as hazardous before entering it."
+      }
+    ],
+    "items": [
+      {
+        "_id": "666a62b82f6813cfbc68ac45",
+        "name": "Staff of Walking",
+        "description": "It at least doubles as a spell focus..."
+      }
+    ],
+    "journal": [
+      {
+        "_id": "666a5cd295feb813931e37b4",
+        "entry": "In a costal city, looking out from the second story window of his room at the inn, he noticed the old innkeeper lady out on a nearby bench feeding the birds.  As he looked on, he was immediately grasped by the instinct to eat the birdseed, taking all the self-control he had to refrain from jumping from the window.  While he was able to avoid injuring himself in that manner, his party members returned later to find him being fed by the old lady."
+      }
+    ],
+    "bio": "Kenku do not give names, so names given to Kenku are typically from companions of other races.  However, due to a misunderstanding, this particular Kenku thought he was choosing his favorite sound, and thus ended up with a \"name\" completely unpronouncable by other races.  And as far as he's concerned, that's their problem.",
+    "user": "6669cf55d1476993cbc3e186"
+  }
+]

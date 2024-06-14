@@ -13,7 +13,7 @@ const Signup = () => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email, password: formState.password,
+        username: formState.username, email: formState.email, password: formState.password,
       },
     });
     const token = mutationResponse.data.addUser.token;
@@ -30,19 +30,27 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+    <main style={{display: "flex", justifyContent: 'center'}}>
+      <div className="box">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Signup to embark on your journey</h4>
-          <div className="card-body">
+          <h4 style-={{color: 'var(--main-light)'}} className="card-header bg-dark p-2">Signup to embark on your journey</h4>
+          <div className="card-body" >
           <form onSubmit={handleFormSubmit}>
      
               <input
                 className="form-input"
-                placeholder="Your username"
-                name="username"
+                placeholder="Email"
+                name="email"
                 type="text"
                 value={formState.email}
+                onChange={handleChange}
+              />
+              <input
+                className="form-input"
+                placeholder="Username"
+                name="username"
+                type="text"
+                value={formState.username}
                 onChange={handleChange}
               />
               <input

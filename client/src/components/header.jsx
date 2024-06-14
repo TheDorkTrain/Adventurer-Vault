@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const IncreasingHeader = ({ text }) => {
@@ -23,6 +24,8 @@ const IncreasingHeader = ({ text }) => {
   };
 
 function RenderComponent({ type }) {
+
+
   switch (type) {
       case '/':
           return <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
@@ -38,7 +41,7 @@ function RenderComponent({ type }) {
 }
 
 function Header() {
-
+  const location = useLocation();
 
   return (
     <> <header> <img src="/src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />

@@ -50,7 +50,7 @@ const Login = () => {
     <><div style={{display: "flex", justifyContent: 'center'}}>
       <div className="box">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2"></h4>
+          <h4 className="card-header bg-dark text-light p-2"> Login To Continue your Adventure</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input

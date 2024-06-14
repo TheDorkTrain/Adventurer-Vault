@@ -74,7 +74,7 @@ const Login = () => {
                 style={{ cursor: 'pointer' }}
                 type="submit"
               >
-            <Link to="/">Present your completed task</Link>
+            <Link to="/">Present your completed</Link>
               </button>
             </form>
 

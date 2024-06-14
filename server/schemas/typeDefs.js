@@ -50,8 +50,8 @@ const typeDefs = `
     lineage: String!
     background: String
     abilities: Abilities!
-    skills: [String]
-    savingThrows: [String]
+    skills: String
+    savingThrows: String
     spells: [Spell]!
     items: [Item]!
     journal: [Entry]!
@@ -72,12 +72,12 @@ const typeDefs = `
   type Mutation {
   addUser(username: String!, email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
-  addCharacter(name: String!, image: String, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: [String], savingThrows: [String], bio: String): Character
+  addCharacter(name: String!, image: String, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: String, savingThrows: String, bio: String): Character
   addSpell(characterId: ID!, name: String!, description: String!): Character
   addItem(characterId: ID!, name: String!, description: String!): Character
   addEntry(characterId: ID!, entry: String!): Character
   # // ? Mutations for edits
-  updateCharacter(characterId: ID!, image: String, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: [String], savingThrows: [String], bio: String): Character
+  updateCharacter(characterId: ID!, image: String, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: String, savingThrows: String, bio: String): Character
   updateSpell(characterId: ID!, spellId: ID!, name: String!, description: String!): Character
   updateItem(characterId: ID!, itemId: ID!, name: String!, description: String!): Character
   updateEntry(characterId: ID!, entryId: ID!, entry: String!): Character

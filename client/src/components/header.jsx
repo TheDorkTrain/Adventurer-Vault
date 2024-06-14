@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const IncreasingHeader = ({ text }) => {
@@ -13,14 +14,39 @@ const IncreasingHeader = ({ text }) => {
   );
 };
 
-function Header() {
 
+  const handleLogout = () => {
+    // Clear the session/token stored in localStorage
+    localStorage.removeItem('token');
+    
+    // Redirect the user to the login page
+    window.location.href = '/login';
+  };
+
+function RenderComponent({ type }) {
+
+
+  switch (type) {
+      case '/':
+          return <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
+      case '/login':
+          return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>
+      case '/signup':
+          return <button className="button ribbon-outset border" id="login"><Link to="/login">Gain Entry</Link></button>
+      case '/create':
+          return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
+      default:
+          return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>;
+  }
+}
+
+function Header() {
+  const location = useLocation();
 
   return (
-    <> <header> <img src="./src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
+    <> <header> <img src="/src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
       <nav id="nav">
-      <Link to='/login'>Login</Link>
-    
+      <RenderComponent type={location.pathname} />
       </nav>
     </header>
     </>

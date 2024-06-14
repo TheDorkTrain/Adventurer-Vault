@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: var(--main-decor);
-  background-color: #242424;
+  background-color: #F8F9F4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,6 +19,15 @@
 
 }
 
+html{
+  margin:0;
+  padding: 0;
+}
+
+#root{
+  padding: 0px;
+}
+
 a {
   font-weight: 600;
   color: #ece6ec;
@@ -30,7 +39,12 @@ a:hover {
 }
 
 body{
-  margin:0;
+  position: fixed;
+  overflow-y: scroll;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  
 }
 
 header {
@@ -38,10 +52,10 @@ header {
   justify-content: center;
   margin: 0;
   background: linear-gradient(90deg, rgba(173,168,182,1) 0%, var(--main-color) 41%, rgba(35,2,46,1) 85%);
-  border-bottom: 5px solid var(--main-decor);
+  border: 5px solid var(--main-decor);
   color: black;
   height: 135px;
-  width: 65vw;
+  width: 100%;
 }
 
 
@@ -77,7 +91,6 @@ header {
 #login {
   align-self: flex-end;
   margin-left: auto;
-  margin-right: 3px;
   height: 30%;
   width: 100%;
 }
@@ -85,8 +98,6 @@ header {
 section {
   background-color: var(--main-light);
   margin: 0;
-  display: flex;
-  justify-content: space-around;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -122,6 +133,18 @@ section {
   
 }
 
+#formLabel{
+  display: flex; 
+  flex-direction: row; 
+  gap: 10px ;
+  justify-content: space-between;
+}
+
+#formInput{
+  width: 40%; 
+  height: 80%;
+}
+
 #subbutt {
 display: flex;
 justify-content: center;
@@ -131,7 +154,7 @@ align-items: flex-start;
 
 button {
   border-radius: 8px;
-  color: rgb(106, 22, 106);
+  color: black;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -161,7 +184,7 @@ footer {
   background-color: var(--main-decor);
   color: var(--main-light);
   height: 50px;
-  width: 135vh;
+  width: 100%;
   position: fixed;
   bottom: 0;
 }
@@ -169,7 +192,7 @@ footer {
 h4 {
   font-size: 1.2em;
   text-align: center;
-  color: #74188d;
+  color: var(--main-light);
   font-weight: 500;
   margin: 0 auto; /* Add this line to center the element horizontally */
 }

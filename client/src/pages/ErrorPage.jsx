@@ -17,7 +17,7 @@ export default function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
-      <img src="./src/assets/taxblade.jpg" alt="Error" />
+      <img src="/src/assets/taxblade.jpg" alt="Error" />
     </div>
   );
 }

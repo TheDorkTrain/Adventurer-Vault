@@ -3,6 +3,14 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ONE_CHARACTER } from '../utils/queries';
 
+import { useMutation } from '@apollo/client';
+import { ADD_SPELL} from '../utils/mutations';
+import { ADD_ITEM} from '../utils/mutations';
+import { ADD_JOURNAL_ENTRY} from '../utils/mutations';
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 const styles = {
   primaryInfo: {
     display: "grid",
@@ -110,6 +118,21 @@ function SingleCharacter() {
   
   const { loading, data } = useQuery(QUERY_ONE_CHARACTER, { variables: { characterId } });
 
+  //For Add Spell Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  //For Add Item Modal
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
+
+    //For Add Journal Modal
+  const [show3, setShow3] = useState(false);
+  const handleClose3 = () => setShow3(false);
+  const handleShow3 = () => setShow3(true);
+
   const stateChange = function(e) {
     setSecondary(e.target.textContent.toLowerCase())
   }
@@ -167,6 +190,41 @@ function SingleCharacter() {
           </>
         )}
       </article>
+
+      {/* <Button style={{width: '15%',backgroundColor: 'var(--main-color)'}} variant="primary" onClick={handleShow}>
+        Add Spells
+      </Button> 
+      <Button  style={{width: '15%',backgroundColor: 'var(--main-color)'}} variant="primary" onClick={handleShow2}>
+        Add Items
+      </Button> */}
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Spell</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><label id="formLabel">Spell Name:  <input type='string' onChange={(event) => setDex(event.target.value)} placeholder="fireball" id="formInput" /></label>
+
+        </Modal.Body>
+        <Modal.Footer>
+        <button style={{width: '40%', height: '10%', backgroundColor: 'var(--main-color)'}} >Add Spell</button>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Item</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading the add Item Modal!</Modal.Body>
+        <Modal.Footer>
+        <button style={{width: '40%', height: '10%', backgroundColor: 'var(--main-color)'}} >Add Item</button>
+          <Button variant="secondary" onClick={handleClose2}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

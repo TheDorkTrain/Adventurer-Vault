@@ -5,10 +5,20 @@ import DiceRoller from '../components/DiceRoller.jsx';
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER } from '../utils/mutations';
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 const Create= () => {
   const [addCharacter] = useMutation(ADD_CHARACTER)
   const [randomImage, setRandomImage] = useState('');
   const [results, setResults] = useState([]);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
 
   const [name, setName] = useState('');
   const [characterClass, setCharacterClass] = useState('');
@@ -108,7 +118,7 @@ const Create= () => {
       
           </div>
         </div>
-        <div id="subbutt"  onClick={handleSubmit} style={{width: '100%',}}><button style={{width: '20%',marginRight: '50px', backgroundColor: 'var(--sub-decor)'}}>Create your Character!</button> <button style={{width: '15%', backgroundColor: 'var(--main-color)'}}>Add Spells</button> <button style={{width: '15%',backgroundColor: 'var(--main-color)'}}>Add Items</button> </div>
+        <div id="subbutt"  onClick={handleSubmit} style={{width: '100%',}}><button style={{width: '20%',marginRight: '50px', backgroundColor: 'var(--sub-decor)'}}>Create your Character!</button> </div>
   
       </section>
     </>

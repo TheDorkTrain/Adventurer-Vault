@@ -1,4 +1,4 @@
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet, BrowserRouter } from 'react-router-dom';
 import {
   ApolloClient,

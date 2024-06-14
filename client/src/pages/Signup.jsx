@@ -32,10 +32,10 @@ const Signup = () => {
   return (
     <main style={{display: "flex", justifyContent: 'center'}}>
       <div className="box">
-        <div className="card">
-          <h4 style-={{color: 'var(--main-light)'}} className="card-header bg-dark p-2">Signup to embark on your journey</h4>
-          <div className="card-body" >
-          <form onSubmit={handleFormSubmit}>
+        <div >
+          <h4 style-={{color: 'var(--main-light)'}} >Signup to embark on your journey</h4>
+          <div >
+          <form style={{ display: 'flex',justifyContent: 'center', flexWrap: 'wrap'}} onSubmit={handleFormSubmit}>
      
               <input
                 className="form-input"
@@ -61,9 +61,11 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              <nav style={{width: '100%', display: 'flex',justifyContent: 'center',}}>
+              <button className="d-block" type="submit">
                 Signup
               </button>
+              </nav>
             </form>
           </div>
         </div>

@@ -154,7 +154,7 @@ align-items: flex-start;
 
 button {
   border-radius: 8px;
-  color: rgb(106, 22, 106);
+  color: var(--main-light);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -192,7 +192,7 @@ footer {
 h4 {
   font-size: 1.2em;
   text-align: center;
-  color: #74188d;
+  color: var(--main-light);
   font-weight: 500;
   margin: 0 auto; /* Add this line to center the element horizontally */
 }

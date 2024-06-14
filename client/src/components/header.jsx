@@ -13,20 +13,27 @@ const IncreasingHeader = ({ text }) => {
   );
 };
 
-//TODO Separate Log out and Dashboard buttons
+
+  const handleLogout = () => {
+    // Clear the session/token stored in localStorage
+    localStorage.removeItem('token');
+    
+    // Redirect the user to the login page
+    window.location.href = '/login';
+  };
 
 function RenderComponent({ type }) {
   switch (type) {
       case '/':
-          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
+          return <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
       case '/login':
           return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>
       case '/signup':
-          return <button className="button ribbon-outset border" id="login"><Link to="/signup">Gain Entry</Link></button>
+          return <button className="button ribbon-outset border" id="login"><Link to="/login">Gain Entry</Link></button>
       case '/create':
-          return <button className="button ribbon-outset border" id="logout">Exit the Dungeon</button>, <button className="button ribbon-outset border" id="logout"><Link to="/signup">Back to Camp</Link></button>
+          return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
       default:
-          return null;
+          return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>;
   }
 }
 

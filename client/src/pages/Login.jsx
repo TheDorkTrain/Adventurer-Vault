@@ -1,8 +1,8 @@
 import { useState } from 'react'; 
 import { Link } from 'react-router-dom';
 import Header from '../components/header';
-// import { useMutation } from '@apollo/client';
-// import { LOGIN_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 import React, { useEffect } from 'react';
 
 
@@ -11,9 +11,8 @@ import Auth from '../utils/auths';
 // login component
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  //const [login, { error, data }] = useMutation(LOGIN_USER);
-const error = {};
-const data = {};
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -48,18 +47,18 @@ const data = {};
   };
 
   return (
-    <>
-      <div className="col-12 col-lg-10">
+    <><div style={{display: "flex", justifyContent: 'center'}}>
+      <div className="box">
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2"></h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
-                placeholder="Your username"
-                name="username"
-                type="username"
-                value={formState.username}
+                placeholder="Your email"
+                name="email"
+                type="email"
+                value={formState.email}
                 onChange={handleChange}
               />
               <input
@@ -86,6 +85,7 @@ const data = {};
             )}
           </div>
         </div>
+      </div>
       </div>
 
      

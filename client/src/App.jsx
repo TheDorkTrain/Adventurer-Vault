@@ -15,6 +15,8 @@ import Header from './components/header';
 import Footer from './components/Footer';
 import './App.css';
 
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -53,7 +55,8 @@ const App = () => {
     </>
   );
 
-};
+}
+
 
 export default App;
 

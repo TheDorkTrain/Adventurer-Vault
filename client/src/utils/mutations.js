@@ -99,3 +99,36 @@ export const ADD_JOURNAL_ENTRY = gql`
         }
     }
 `;
+
+export const DELETE_SPELL =gql`
+    mutation deleteSpell($characterId: ID!, $spellId: ID!) {
+    deleteSpell(characterId: $characterId, spellId: $spellId){
+    name
+    spells{
+    _id
+    }
+    }
+ }
+`
+
+export const DELETE_ITEM =gql`
+    mutation deleteItem($characterId: ID!, $itemId: ID!) {
+    deleteItem(characterId: $characterId, itemId: $itemId){
+    name
+    items{
+    _id
+    }
+    }
+ }
+`
+
+export const DELETE_ENTRY =gql`
+    mutation deleteEntry($characterId: ID!, $entryId: ID!) {
+    deleteEntry(characterId: $characterId, entryId: $entryId){
+    name
+    journal{
+    _id
+    }
+    }
+ }
+`

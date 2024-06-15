@@ -175,17 +175,17 @@ const resolvers = {
     },
 
     deleteSpell: async (parent, { characterId, spellId }, context) => {
-      const character = await Character.findById(characterId);
+  const character = await Character.findById(characterId);
 
-      if (context.user?._id === character.user.toString()) {
-        return Character.findOneAndUpdate(
-          { _id: characterId },
-          { $pull: { spells: { _id: spellId } } },
-          { new: true, runValidators: true }
-        ).populate('spells');
-      }
-      throw AuthenticationError;
-    },
+  if (context.user?._id === character.user.toString()) {
+    return Character.findOneAndUpdate(
+      { _id: characterId },
+      { $pull: { spells: { _id: spellId } } },
+      { new: true, runValidators: true }
+    ).populate('spells');
+  }
+  throw new AuthenticationError('Unauthorized');
+},
 
     deleteItem: async (parent, { characterId, itemId }, context) => {
       const character = await Character.findById(characterId);

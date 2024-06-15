@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import CloseButton from 'react-bootstrap/CloseButton';
 import { useMutation } from '@apollo/client';
-import { ADD_SPELL } from '../utils/mutations';
-import { ADD_ITEM } from '../utils/mutations';
-import { ADD_JOURNAL_ENTRY } from '../utils/mutations';
+import { ADD_SPELL, ADD_ITEM, ADD_JOURNAL_ENTRY, DELETE_SPELL, DELETE_ITEM, DELETE_ENTRY } from '../utils/mutations';
 
 export default function SingleDetails({ styles, secondary, setSecondary, character }) {
 //For Add Spell Modal
@@ -26,6 +25,9 @@ const handleShow3 = () => setShow3(true);
 const [addSpell] = useMutation(ADD_SPELL)
 const [addItem] = useMutation(ADD_ITEM)
 const [addEntry] = useMutation(ADD_JOURNAL_ENTRY)
+const [deleteSpell] = useMutation(DELETE_SPELL)
+const [deleteItem] = useMutation(DELETE_ITEM)
+const [deleteEntry] = useMutation(DELETE_ENTRY)
 const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [entry, setEntry] = useState('');
@@ -59,7 +61,6 @@ const handleSubmitItem = async () => {
   }
 };
 
-
 const handleSubmitEntry= async () => {
   try {
     const { data } = await addEntry({
@@ -74,6 +75,45 @@ const handleSubmitEntry= async () => {
   }
 };
 
+const handleDeleteSpell= async (lineItem) => {
+  try {
+    const { data } = await deleteSpell({
+      variables: {
+        characterId: character._id,
+        spellId: lineItem._id
+      },
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const handleDeleteItem= async (lineItem) => {
+  try {
+    const { data } = await deleteItem({
+      variables: {
+        characterId: character._id,
+        itemId: lineItem._id
+      },
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const handleDeleteEntry= async (lineItem) => {
+  try {
+    const { data } = await deleteEntry({
+      variables: {
+        characterId: character._id,
+        entryId: lineItem._id
+      },
+    });
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   const stateChange = function(e) {
     setSecondary(e.target.textContent.toLowerCase())
   }
@@ -82,16 +122,19 @@ const handleSubmitEntry= async () => {
     switch (secondary) {
       case 'spells':
         return (<div style={styles.subItem} key={lineItem._id}>
-          <p>{lineItem.name}</p>
+          <div style={{display: 'flex', justifyContent: 'space-between' }}><p>{lineItem.name}</p><CloseButton id="test" onClick={() => handleDeleteSpell(lineItem)} /></div>
           <p>{lineItem.description}</p>
         </div>)
       case 'items':
         return (<div style={styles.subItem} key={lineItem._id}>
-          <p>{lineItem.name}</p>
+          <div style={{display: 'flex', justifyContent: 'space-between' }}><p>{lineItem.name}</p><CloseButton id="test" onClick={() => handleDeleteItem(lineItem)} /></div>
           <p>{lineItem.description}</p>
         </div>)
       case 'journal':
-        return <p style={styles.subItem} key={lineItem._id}>{lineItem.entry}</p>
+        return (<div style={styles.subItem} key={lineItem._id}>
+          <div style={{display: 'flex', justifyContent: 'space-between' }}><p>{lineItem.name}</p><CloseButton id="test" onClick={() => handleDeleteEntry(lineItem)} /></div>
+          <p>{lineItem.entry}</p>
+        </div>)
       default:
         return <p>Select one of the options above!</p>
     }
@@ -99,17 +142,27 @@ const handleSubmitEntry= async () => {
   const subButt = function() {
     switch (secondary) {
       case 'spells':
-        return  <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow}>
+        return  <>
+        <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow}>
           Add Spell
-        </Button> 
+        </Button> <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
+          Refresh
+        </Button> </>
       case 'items':
-        return  <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow2}>
+        return  <>
+        <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow2}>
           Add Item
-        </Button>
+        </Button><Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
+          Refresh
+        </Button> </>
       case 'journal':
-        return <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow3}>
+        return <>
+        <Button style={{backgroundColor: 'var(--main-decor)', width: '97px', border: '1px, solid, white'}} onClick={handleShow3}>
         Add Entry
       </Button>
+      <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
+      Refresh
+    </Button> </>
       default:
         return 
     }

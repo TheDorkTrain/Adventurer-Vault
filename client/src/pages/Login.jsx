@@ -35,7 +35,7 @@ const Login = () => {
       });
 
       Auth.login(data.login.token);
-      <Link to="/"></Link>
+      <Link to="/camp"></Link>
     } catch (e) {
       console.error(e);
     }

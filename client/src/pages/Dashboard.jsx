@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries'; // Add the missing import statement
 import { Link } from 'react-router-dom'; // Add the missing import statement
 import React from 'react'; // Add the missing import statement
-import Create from './Create'; // Add the missing import statement
 
 const Dashboard = () => {
 

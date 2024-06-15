@@ -78,20 +78,18 @@ const Create= () => {
   return (
     <>
       <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
-        <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center'}}>
+        <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center', }}>
           <div style={{ display: 'flex', flexDirection: 'column', width:'55%',  gap: '2px', fontWeight: 'bold'}}>
           <label id="formLabel">Character Name:  <input value={name} onChange={(event) => setName(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Class:  <input value={characterClass} onChange={(event) => setCharacterClass(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Lineage:  <input value={lineage} onChange={(event) => setLineage(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Background:  <input value={background} onChange={(event) => setBackground(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Level:  <input value={level} onChange={(event) => setLevel(event.target.value)} id="formInput" /></label>
-          {/* <label>Abilities:</label>
-          <input placeholder="Second Wind, Action Surge, Fighting Style, Etc" style={{width: '95%', height: '80%'}} /> */}
+          <label>Character Summary:</label>
+          <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
           <ImageUpload />            
-          <label>Character Summary:</label>
-          <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
             
           </div>
           

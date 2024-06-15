@@ -113,6 +113,14 @@ export const ADD_JOURNAL_ENTRY = gql`
     }
 `;
 
+export const DELETE_CHARACTER =gql`
+    mutation deleteCharacter($characterId: ID!) {
+    deleteCharacter(characterId: $characterId){
+    _id
+    }
+ }
+`
+
 export const DELETE_SPELL =gql`
     mutation deleteSpell($characterId: ID!, $spellId: ID!) {
     deleteSpell(characterId: $characterId, spellId: $spellId){

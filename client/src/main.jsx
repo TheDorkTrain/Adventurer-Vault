@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import AllCharacters from './pages/AllCharacters.jsx'
 import SingleCharacter from './pages/SingleCharacter.jsx';
+import ViewCharacter from './pages/ViewCharacter.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       }, {
         path: '/character/:characterId',
         element: <SingleCharacter/>
+      },
+      {
+        path: '/viewcharacter/:characterId',
+        element: <ViewCharacter/>
       }
     ]
   },

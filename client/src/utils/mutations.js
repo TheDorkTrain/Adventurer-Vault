@@ -88,6 +88,19 @@ export const ADD_ITEM = gql`
     }
 `;
 
+export const ADD_FEAT = gql`
+    mutation AddFeat($characterId: ID!, $name: String!, $description: String!) {
+        addFeat(characterId: $characterId, name: $name, description: $description) {
+            name
+            feats{
+                _id
+                name    
+                description
+            }
+        }
+    }
+`;
+
 export const ADD_JOURNAL_ENTRY = gql`
     mutation AddJournalEntry($characterId: ID!, $entry: String!) {
         addEntry(characterId: $characterId, entry: $entry) {
@@ -116,6 +129,17 @@ export const DELETE_ITEM =gql`
     deleteItem(characterId: $characterId, itemId: $itemId){
     name
     items{
+    _id
+    }
+    }
+ }
+`
+
+export const DELETE_FEAT =gql`
+    mutation deleteFeat($characterId: ID!, $featId: ID!) {
+    deleteFeat(characterId: $characterId, featId: $featId){
+    name
+    feats{
     _id
     }
     }

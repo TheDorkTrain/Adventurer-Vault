@@ -48,6 +48,16 @@ const itemSchema = new Schema({
     required: true
   }
 });
+const featSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  }
+});
 
 const entrySchema = new Schema({
   entry: {
@@ -56,4 +66,4 @@ const entrySchema = new Schema({
   }
 });
 
-module.exports = { abilitySchema, spellSchema, itemSchema, entrySchema }
+module.exports = { abilitySchema, spellSchema, itemSchema, entrySchema, featSchema }

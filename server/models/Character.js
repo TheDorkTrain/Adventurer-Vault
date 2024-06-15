@@ -2,6 +2,7 @@ const {
   abilitySchema,
   spellSchema,
   itemSchema,
+  featSchema,
   entrySchema
 } = require('./schemas')
 const { Schema, model } = require('mongoose');
@@ -33,6 +34,7 @@ const characterSchema = new Schema({
   savingThrows: String,
   spells: [ spellSchema ],
   items: [ itemSchema ],
+  feats: [ featSchema ],
   journal: [ entrySchema ],
   bio: String,
   user: {

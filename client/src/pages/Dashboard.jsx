@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const loggedIn = Auth.loggedIn();
   if (!loggedIn) {
-    window.location.assign('/login')
+    window.location.assign('/')
   }
 
   if (loading) {

@@ -18,7 +18,7 @@ db.once('open', async () => {
     { $addToSet: { characters: characters[0]._id } },
     {new:true}
   )
-  console.log(newUser)
+
   console.log('all done!');
   process.exit(0);
 });

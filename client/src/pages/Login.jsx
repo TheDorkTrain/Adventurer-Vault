@@ -13,7 +13,7 @@ const Login = () => {
 
   const loggedIn = Auth.loggedIn();
   if (loggedIn) {
-    window.location.assign('/')
+    window.location.assign('/camp')
   }
 
   const [formState, setFormState] = useState({ email: '', password: '' });

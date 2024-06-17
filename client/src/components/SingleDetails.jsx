@@ -181,28 +181,28 @@ const handleDeleteEntry= async (lineItem) => {
     switch (secondary) {
       case 'spells':
         return  <>
-        <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow}>
+        <Button style={{backgroundColor: 'var(--main-decor)', width: '100px', border: '1px, solid, white'}} onClick={handleShow}>
           Add Spell
         </Button> <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
           Refresh
         </Button> </>
       case 'items':
         return  <>
-        <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow2}>
+        <Button style={{backgroundColor: 'var(--main-decor)', width: '100px', border: '1px, solid, white'}} onClick={handleShow2}>
           Add Item
         </Button><Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
           Refresh
         </Button> </>
       case 'feats':
           return  <>
-            <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={handleShow4}>
+            <Button style={{backgroundColor: 'var(--main-decor)', width: '100px', border: '1px, solid, white'}} onClick={handleShow4}>
                Add Feat
             </Button><Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>
             Refresh
             </Button> </>
       case 'journal':
         return <>
-        <Button style={{backgroundColor: 'var(--main-decor)', width: '97px', border: '1px, solid, white'}} onClick={handleShow3}>
+        <Button style={{backgroundColor: 'var(--main-decor)', width: '100px', border: '1px, solid, white'}} onClick={handleShow3}>
         Add Entry
       </Button>
       <Button style={{backgroundColor: 'var(--main-decor)', border: '1px, solid, white'}} onClick={() => location.reload()}>

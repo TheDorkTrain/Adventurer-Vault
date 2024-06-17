@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries'; // Add the missing import statement
 import { Link } from 'react-router-dom'; // Add the missing import statement
 import React from 'react'; // Add the missing import statement
-import Create from './Create'; // Add the missing import statement
 
 const Dashboard = () => {
 
@@ -13,7 +12,7 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+console.log(data)
 
 
   return (
@@ -27,7 +26,7 @@ const Dashboard = () => {
           <ul style={{listStyleType: 'none'}}>
             {user.characters?.map((character) => (
               <li key={character._id}>
-                <Link to={`/character/${character._id}`}><h3>{character.name}</h3></Link>
+                <h3><Link to={`/character/${character._id}`}>{character.name}</Link></h3>
                 {/* <p>Class: {character.class}</p>
                 <p>Level: {character.level}</p>
                 <p>Lineage:
@@ -61,7 +60,7 @@ const Dashboard = () => {
           </form>
         </div>
         <div className="box2" style={{alignItems: 'center', width: '100%'}}>
-        <Link to="/characters">View All Characters</Link> {/* link to view all characters */}
+        <Link to='/allcharacters'>View All Characters</Link> {/* link to view all characters */}
         </div>
         </div>
       </div>

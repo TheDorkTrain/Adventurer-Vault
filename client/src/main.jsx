@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import AllCharacters from './pages/AllCharacters.jsx'
 import SingleCharacter from './pages/SingleCharacter.jsx';
+import ViewCharacter from './pages/ViewCharacter.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />
-      }, {
-        path: '/login',
         element: <Login />
+      }, {
+        path: '/camp',
+        element: <Dashboard />
       }, {
         path: '/signup',
         element: <Signup />
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       }, {
         path: '/character/:characterId',
         element: <SingleCharacter/>
+      },
+      {
+        path: '/viewcharacter/:characterId',
+        element: <ViewCharacter/>
       }
     ]
   },

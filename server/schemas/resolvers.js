@@ -81,6 +81,17 @@ const resolvers = {
       throw AuthenticationError;
     },
 
+    addFeat: async (parent, { characterId, name, description }, context) => {
+      if (context.user) {
+        return await Character.findOneAndUpdate(
+          { _id: characterId },
+          { $addToSet: { feats: { name, description } } },
+          { new: true }
+        ).populate('feats');
+      }
+      throw AuthenticationError;
+    },
+
     addEntry: async (parent, { characterId, entry }, context) => {
       if (context.user) {
         return Character.findOneAndUpdate(
@@ -175,17 +186,17 @@ const resolvers = {
     },
 
     deleteSpell: async (parent, { characterId, spellId }, context) => {
-      const character = await Character.findById(characterId);
+  const character = await Character.findById(characterId);
 
-      if (context.user?._id === character.user.toString()) {
-        return Character.findOneAndUpdate(
-          { _id: characterId },
-          { $pull: { spells: { _id: spellId } } },
-          { new: true, runValidators: true }
-        ).populate('spells');
-      }
-      throw AuthenticationError;
-    },
+  if (context.user?._id === character.user.toString()) {
+    return Character.findOneAndUpdate(
+      { _id: characterId },
+      { $pull: { spells: { _id: spellId } } },
+      { new: true, runValidators: true }
+    ).populate('spells');
+  }
+  throw new AuthenticationError('Unauthorized');
+},
 
     deleteItem: async (parent, { characterId, itemId }, context) => {
       const character = await Character.findById(characterId);
@@ -196,6 +207,19 @@ const resolvers = {
           { $pull: { items: { _id: itemId } } },
           { new: true, runValidators: true }
         ).populate('items');
+      }
+      throw AuthenticationError;
+    },
+
+    deleteFeat: async (parent, { characterId, featId }, context) => {
+      const character = await Character.findById(characterId);
+
+      if (context.user?._id === character.user.toString()) {
+        return Character.findOneAndUpdate(
+          { _id: characterId },
+          { $pull: { feats: { _id: featId } } },
+          { new: true, runValidators: true }
+        ).populate('feats');
       }
       throw AuthenticationError;
     },

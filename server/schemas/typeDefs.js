@@ -36,6 +36,12 @@ const typeDefs = `
     description: String
   }
 
+   type Feat {
+    _id: ID
+    name: String
+    description: String
+  }
+
   type Entry {
     _id: ID
     entry: String
@@ -54,6 +60,7 @@ const typeDefs = `
     savingThrows: String
     spells: [Spell]!
     items: [Item]!
+    feats: [Feat]!
     journal: [Entry]!
     bio: String
   }
@@ -75,6 +82,7 @@ const typeDefs = `
   addCharacter(name: String!, image: String, characterClass: String!, level: Int!, lineage: String!, background: String, abilities: AbilitiesInput!, skills: String, savingThrows: String, bio: String): Character
   addSpell(characterId: ID!, name: String!, description: String!): Character
   addItem(characterId: ID!, name: String!, description: String!): Character
+  addFeat(characterId: ID!, name: String!, description: String!): Character
   addEntry(characterId: ID!, entry: String!): Character
   # // ? Mutations for edits
   updateCharacter(characterId: ID!, image: String, name: String, characterClass: String, level: Int, lineage: String, background: String, abilities: AbilitiesInput, skills: String, savingThrows: String, bio: String): Character
@@ -85,6 +93,7 @@ const typeDefs = `
   deleteCharacter(characterId: ID!): Character
   deleteSpell(characterId: ID!, spellId: ID!): Character
   deleteItem(characterId: ID!, itemId: ID!): Character
+  deleteFeat(characterId: ID!, featId: ID!): Character
   deleteEntry(characterId: ID!, entryId: ID!): Character
   }
 `;

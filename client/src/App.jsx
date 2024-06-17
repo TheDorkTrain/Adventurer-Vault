@@ -1,4 +1,4 @@
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet, BrowserRouter } from 'react-router-dom';
 import {
   ApolloClient,
@@ -8,7 +8,6 @@ import {
 } from '@apollo/client';
 
 import { setContext } from '@apollo/client/link/context';
-import AllCharacters from './pages/AllCharacters';
 import bgMaps from './utils/bgMaps'
 bgMaps()
 import Header from './components/header';

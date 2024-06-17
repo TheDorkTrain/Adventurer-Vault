@@ -7,6 +7,9 @@ import ImageUpload from '../components/ImageUpload.jsx';
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER } from '../utils/mutations';
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 const Create= () => {
   const [addCharacter] = useMutation(ADD_CHARACTER)
   const [randomImage, setRandomImage] = useState('');
@@ -75,21 +78,18 @@ const Create= () => {
   return (
     <>
       <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
-        <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center'}}>
-          <div style={{ display: 'flex', flexDirection: 'column', width:'55%', fontWeight: 'bold'}}>
+        <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center', }}>
+          <div style={{ display: 'flex', flexDirection: 'column', width:'55%',  gap: '2px', fontWeight: 'bold'}}>
           <label id="formLabel">Character Name:  <input value={name} onChange={(event) => setName(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Class:  <input value={characterClass} onChange={(event) => setCharacterClass(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Lineage:  <input value={lineage} onChange={(event) => setLineage(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Background:  <input value={background} onChange={(event) => setBackground(event.target.value)} id="formInput" /></label>
           <label id="formLabel">Level:  <input value={level} onChange={(event) => setLevel(event.target.value)} id="formInput" /></label>
-          {/* <label>Abilities:</label>
-          <input placeholder="Second Wind, Action Surge, Fighting Style, Etc" style={{width: '95%', height: '80%'}} /> */}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
-          <label>Upload Picture: </label>
-          <ImageUpload />            
           <label>Character Summary:</label>
           <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
+          <ImageUpload />            
             
           </div>
           
@@ -110,7 +110,7 @@ const Create= () => {
       
           </div>
         </div>
-        <div id="subbutt"  onClick={handleSubmit} style={{width: '100%',}}><button style={{width: '20%',marginRight: '50px', backgroundColor: 'var(--sub-decor)'}}>Create your Character!</button> <button style={{width: '15%', backgroundColor: 'var(--main-color)'}}>Add Spells</button> <button style={{width: '15%',backgroundColor: 'var(--main-color)'}}>Add Items</button> </div>
+        <div id="subbutt"  onClick={handleSubmit} style={{width: '100%',}}><button style={{width: '20%',marginRight: '50px', backgroundColor: 'var(--sub-decor)'}}>Create your Character!</button> </div>
   
       </section>
     </>

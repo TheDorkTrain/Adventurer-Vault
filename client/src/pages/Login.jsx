@@ -35,6 +35,7 @@ const Login = () => {
       });
 
       Auth.login(data.login.token);
+      <Link to="/camp"></Link>
     } catch (e) {
       console.error(e);
     }
@@ -49,9 +50,9 @@ const Login = () => {
   return (
     <><div style={{display: "flex", justifyContent: 'center'}}>
       <div className="box">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2"> Login To Continue your Adventure</h4>
-          <div className="card-body">
+        <div >
+          <h4 > Login To Continue your Adventure</h4>
+          <div >
             <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
@@ -69,13 +70,15 @@ const Login = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
+              <nav style={{width: '100%', display: 'flex',justifyContent: 'center',}}>
               <button
-                className="btn btn-block btn-primary"
                 style={{ cursor: 'pointer' }}
                 type="submit"
+                onClick={handleFormSubmit}
               >
-            <Link to="/">Present your completed</Link>
+            Present your completed task
               </button>
+              </nav>
             </form>
 
             {error && (

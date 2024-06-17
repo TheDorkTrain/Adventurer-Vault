@@ -27,14 +27,46 @@ const handleClose3 = () => setShow3(false);
 const handleShow3 = () => setShow3(true);
 
 //For Mutations
-const [addSpell] = useMutation(ADD_SPELL)
-const [addItem] = useMutation(ADD_ITEM)
-const [addFeat] = useMutation(ADD_FEAT)
-const [addEntry] = useMutation(ADD_JOURNAL_ENTRY)
-const [deleteSpell] = useMutation(DELETE_SPELL)
-const [deleteItem] = useMutation(DELETE_ITEM)
-const [deleteFeat] = useMutation(DELETE_FEAT)
-const [deleteEntry] = useMutation(DELETE_ENTRY)
+const [addSpell] = useMutation(ADD_SPELL, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [addItem] = useMutation(ADD_ITEM, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [addFeat] = useMutation(ADD_FEAT, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [addEntry] = useMutation(ADD_JOURNAL_ENTRY, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [deleteSpell] = useMutation(DELETE_SPELL, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [deleteItem] = useMutation(DELETE_ITEM, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [deleteFeat] = useMutation(DELETE_FEAT, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
+const [deleteEntry] = useMutation(DELETE_ENTRY, {
+  refetchQueries: [
+    'OneCharacter'
+  ]
+})
 const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [entry, setEntry] = useState('');
@@ -49,8 +81,11 @@ const handleSubmitSpell = async () => {
         description: description,
       },
     });
-  } catch (error) { console.log("form failed")
-    
+    setName('');
+    setDescription('');
+    handleClose();
+  } catch (error) {
+    console.error("Form failed", error)
   }
 };
 
@@ -63,8 +98,11 @@ const handleSubmitItem = async () => {
         description: description,
       },
     });
+    setName('');
+    setDescription('');
+    handleClose2();
   } catch (error) {
-    
+    console.error(error)
   }
 };
 
@@ -77,8 +115,11 @@ const handleSubmitFeat = async () => {
         description: description,
       },
     });
+    setName('');
+    setDescription('');
+    handleClose4();
   } catch (error) {
-    
+    console.error(error)
   }
 };
 
@@ -91,8 +132,11 @@ const handleSubmitEntry= async () => {
         entry: entry,
       },
     });
+    setName('');
+    setEntry('');
+    handleClose3();
   } catch (error) {
-    
+    console.error(error)
   }
 };
 
@@ -105,7 +149,7 @@ const handleDeleteSpell= async (lineItem) => {
       },
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -118,7 +162,7 @@ const handleDeleteItem= async (lineItem) => {
       },
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 const handleDeleteFeat= async (lineItem) => {
@@ -130,7 +174,7 @@ const handleDeleteFeat= async (lineItem) => {
       },
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 
@@ -143,7 +187,7 @@ const handleDeleteEntry= async (lineItem) => {
       },
     });
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
 

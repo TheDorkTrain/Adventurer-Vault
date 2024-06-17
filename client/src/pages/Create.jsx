@@ -57,7 +57,6 @@ const Create= () => {
   }
 
   const handleSubmit = async () => {
-
     try {
       const { data } = await addCharacter({
         variables: {
@@ -74,8 +73,10 @@ const Create= () => {
         },
       });
       // Handle response data as needed
+      window.location.assign(`/character/${data.addCharacter._id}`)
     } catch (error) {
       // Handle any errors
+      console.error(error)
     }
   };
 
@@ -93,7 +94,7 @@ const Create= () => {
           <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
-          <ImageUpload />            
+          <ImageUpload image={image} setImage={setImage} />            
             
           </div>
           

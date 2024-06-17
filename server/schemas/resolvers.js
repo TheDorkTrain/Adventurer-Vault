@@ -12,7 +12,7 @@ const resolvers = {
     },
     
     characters: async () => {
-      // TODO: Populate?  What needs to be displayed?
+      // TODO: Populate if necessary
       return await Character.find();
     },
   },

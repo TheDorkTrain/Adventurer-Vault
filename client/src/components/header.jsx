@@ -2,6 +2,7 @@ import { useState } from 'react'
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import party from '../assets/party.png'
 
 
 const IncreasingHeader = ({ text }) => {
@@ -44,7 +45,7 @@ function Header() {
   const location = useLocation();
 
   return (
-    <> <header> <img src="/src/assets/party.png"></img><IncreasingHeader text="Adventurer Vault" />
+    <> <header> <img src={party}></img><IncreasingHeader text="Adventurer Vault" />
       <nav id="nav">
       <RenderComponent type={location.pathname} />
       </nav>

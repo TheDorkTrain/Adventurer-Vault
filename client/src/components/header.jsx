@@ -37,7 +37,7 @@ function RenderComponent({ type }) {
       case '/create':
           return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
       default:
-          return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>;
+          return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
   }
 }
 

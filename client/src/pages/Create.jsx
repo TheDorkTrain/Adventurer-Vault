@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload.jsx';
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER } from '../utils/mutations';
+import Auth from '../utils/auths.js'
 
 const Create= () => {
   const [addCharacter] = useMutation(ADD_CHARACTER)
@@ -29,7 +30,10 @@ const Create= () => {
   const [skills, setSkills] = useState('');
   const [savingThrows, setThrows] = useState('');
   
-
+  const loggedIn = Auth.loggedIn();
+  if (!loggedIn) {
+    window.location.assign('/login')
+  }
 
   const updateResults = (newResults) => {
     setResults(newResults);
@@ -74,7 +78,7 @@ const Create= () => {
 
   return (
     <>
-      <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
+      <section id="mainSection" style={{ minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
         <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center'}}>
           <div style={{ display: 'flex', flexDirection: 'column', width:'55%', fontWeight: 'bold'}}>
           <label id="formLabel">Character Name:  <input value={name} onChange={(event) => setName(event.target.value)} id="formInput" /></label>

@@ -1,10 +1,11 @@
+import noImg from '../assets/default-portrait.svg'
 export default function SingleStats({ styles, character}) {
   return (<>
     <h2 style={styles.name}>{character.name}</h2>
     <p style={styles.classLevel}>Level {character.level} {character.lineage} {character.characterClass}</p>
     <p style={styles.background}>Background: { character.background || 'Secret' }</p>
     <p style={styles.infoTitle}>Ability Scores</p>
-    <img src={character.image || `/src/assets/default-portrait.svg`} style={styles.image}></img>
+    <img src={character.image || noImg} style={styles.image}></img>
     <div style={styles.abilities}>
       <p style={styles.stats}>STR: {character.abilities.str}</p>
       <p style={styles.stats}>DEX: {character.abilities.dex}</p>

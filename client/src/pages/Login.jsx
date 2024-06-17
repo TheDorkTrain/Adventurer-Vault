@@ -10,6 +10,12 @@ import Auth from '../utils/auths';
 
 // login component
 const Login = () => {
+
+  const loggedIn = Auth.loggedIn();
+  if (loggedIn) {
+    window.location.assign('/')
+  }
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 

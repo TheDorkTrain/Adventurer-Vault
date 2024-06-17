@@ -6,6 +6,12 @@ import Auth from '../utils/auths';
 
 
 const Signup = () => {
+
+  const loggedIn = Auth.loggedIn();
+  if (loggedIn) {
+    window.location.assign('/')
+  }
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 

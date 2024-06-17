@@ -70,19 +70,19 @@ export default {
   secondaryInfo: {
     color: "var(--sub-light)",
     display: "grid",
-    gridTemplate: "2em 1fr / 1fr 1fr 1fr",
+    gridTemplate: "2em 1fr / 1fr 1fr 1fr 1fr",
     opacity: "revert-layer",
     backgroundColor: "var(--sub-decor)",
     margin: "20px",
     height: "calc(100vh - 247px)",
-    width: "40%",
+    width: "50%",
     justifyContent: "space-around",
     border: "5px solid var(--main-decor)",
   },
   button: {
     color: "var(--sub-light)",
     textAlign: "center",
-    padding: 0
+    padding: 0,
   },
   subWindow: {
     margin: 0,

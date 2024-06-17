@@ -30,7 +30,7 @@ const Dashboard = () => {
           <ul style={{listStyleType: 'none'}}>
             {user.characters?.map((character) => (
               <li key={character._id}>
-                <Link to={`/character/${character._id}`}><h3>{character.name}</h3></Link>
+                <h3><Link to={`/character/${character._id}`}>{character.name}</Link></h3>
                 {/* <p>Class: {character.class}</p>
                 <p>Level: {character.level}</p>
                 <p>Lineage:
@@ -64,7 +64,7 @@ const Dashboard = () => {
           </form>
         </div>
         <div className="box2" style={{alignItems: 'center', width: '100%'}}>
-        <Link to="/characters">View All Characters</Link> {/* link to view all characters */}
+        <Link to='/allcharacters'>View All Characters</Link> {/* link to view all characters */}
         </div>
         </div>
       </div>

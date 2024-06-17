@@ -21,23 +21,21 @@ const IncreasingHeader = ({ text }) => {
     localStorage.removeItem('id_token');
     
     // Redirect the user to the login page
-    window.location.href = '/login';
+    window.location.href = '/';
   };
 
 function RenderComponent({ type }) {
 
 
   switch (type) {
-      case '/':
+      case '/camp':
           return <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button>
-      case '/login':
+      case '/':
           return <button style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="login"><Link to="/signup">Adventurers Sign Up!</Link></button>
       case '/signup':
-          return <button className="button ribbon-outset border" id="login"><Link to="/login">Gain Entry</Link></button>
-      case '/create':
-          return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
+          return <button className="button ribbon-outset border" id="login"><Link to="/">Gain Entry</Link></button>
       default:
-          return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/">Back to Camp</Link></button> </div>
+        return <div> <button onClick={handleLogout} style={{color: 'var(--main-light)'}} className="button ribbon-outset border" id="logout">Exit the Dungeon</button> <button className="button ribbon-outset border" id="logout"><Link to="/camp">Back to Camp</Link></button> </div>
   }
 }
 

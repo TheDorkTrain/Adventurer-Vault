@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ONE_CHARACTER } from '../utils/queries';
 import styles from './singleStyles'
 import SingleStats from '../components/SingleStats'
-import SingleDetails from '../components/SingleDetails';
+import ViewSingleDetails from '../components/ViewSingleDetails';
 
 
 function SingleCharacter() {
@@ -22,7 +22,7 @@ function SingleCharacter() {
         {loading ? (<h2>Loading...</h2>) : <SingleStats styles={styles} character={data.character} /> }
       </article>
       <article style={styles.secondaryInfo}>
-        {loading ? (<h2>Loading...</h2>) : <SingleDetails styles={styles} secondary={secondary} setSecondary={setSecondary} character={data.character} /> }
+        {loading ? (<h2>Loading...</h2>) : <ViewSingleDetails styles={styles} secondary={secondary} setSecondary={setSecondary} character={data.character} /> }
       </article>
 
     </div>

@@ -72,6 +72,11 @@ export const QUERY_ONE_CHARACTER = gql`
                 name
                 description
             }
+            feats {
+                _id
+                name
+                description
+            }
             journal {
                 _id
                 entry

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload.jsx';
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER } from '../utils/mutations';
+import Auth from '../utils/auths.js'
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -32,7 +33,10 @@ const Create= () => {
   const [skills, setSkills] = useState('');
   const [savingThrows, setThrows] = useState('');
   
-
+  const loggedIn = Auth.loggedIn();
+  if (!loggedIn) {
+    window.location.assign('/login')
+  }
 
   const updateResults = (newResults) => {
     setResults(newResults);
@@ -53,7 +57,6 @@ const Create= () => {
   }
 
   const handleSubmit = async () => {
-
     try {
       const { data } = await addCharacter({
         variables: {
@@ -70,14 +73,16 @@ const Create= () => {
         },
       });
       // Handle response data as needed
+      window.location.assign(`/character/${data.addCharacter._id}`)
     } catch (error) {
       // Handle any errors
+      console.error(error)
     }
   };
 
   return (
     <>
-      <section id="mainSection" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(${randomImage})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
+      <section id="mainSection" style={{ minHeight: '100vh', backgroundPosition: 'center', justifyContent: 'space-evenly' }}>
         <form className= "box" style={{height:'100%', paddingBottom: '50px', alignSelf: 'center', }}>
           <div style={{ display: 'flex', flexDirection: 'column', width:'55%',  gap: '2px', fontWeight: 'bold'}}>
           <label id="formLabel">Character Name:  <input value={name} onChange={(event) => setName(event.target.value)} id="formInput" /></label>
@@ -89,7 +94,7 @@ const Create= () => {
           <input value={bio} onChange={(event) => setBio(event.target.value)} style={{width: '95%', height: '80%',}} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', width:'40%', fontWeight: 'bold'}}>
-          <ImageUpload />            
+          <ImageUpload image={image} setImage={setImage} />            
             
           </div>
           

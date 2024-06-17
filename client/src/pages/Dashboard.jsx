@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries'; // Add the missing import statement
-import { Link } from 'react-router-dom'; // Add the missing import statement
-import React from 'react'; // Add the missing import statement
+import { QUERY_USER } from '../utils/queries';
+import { Link } from 'react-router-dom';
+import React from 'react';
+import Auth from '../utils/auths'
 
 const Dashboard = () => {
 
@@ -9,11 +10,14 @@ const Dashboard = () => {
 
   const user = data?.me || {};
 
+  const loggedIn = Auth.loggedIn();
+  if (!loggedIn) {
+    window.location.assign('/')
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }
-console.log(data)
-
 
   return (
     

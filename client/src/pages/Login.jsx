@@ -10,6 +10,12 @@ import Auth from '../utils/auths';
 
 // login component
 const Login = () => {
+
+  const loggedIn = Auth.loggedIn();
+  if (loggedIn) {
+    window.location.assign('/camp')
+  }
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -28,7 +34,6 @@ const Login = () => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       const { data } = await login({
         variables: { ...formState },

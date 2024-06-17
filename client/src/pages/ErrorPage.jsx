@@ -1,5 +1,5 @@
 import { useRouteError } from "react-router-dom";
-
+import taxblade from '../assets/taxblade.jpg'
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -17,7 +17,7 @@ export default function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
-      <img src="/src/assets/taxblade.jpg" alt="Error" />
+      <img src={taxblade} alt="Error" />
     </div>
   );
 }
